@@ -24,7 +24,7 @@ class SignasphereApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
-    
+
     return MaterialApp.router(
       title: 'Signasphere',
       debugShowCheckedModeBanner: false,

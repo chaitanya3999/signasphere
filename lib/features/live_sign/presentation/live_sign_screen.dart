@@ -1,282 +1,284 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:go_router/go_router.dart';
-import '../../../../core/widgets/glass_container.dart';
-import '../../../../core/services/tts_service.dart';
-import '../data/sign_repository.dart';
+import 'package:signasphere/features/live_sign/application/gesture_controller.dart';
+import 'package:signasphere/features/live_sign/presentation/widgets/native_camera_view.dart';
 
-// Provides the list of available cameras
-final camerasProvider = FutureProvider<List<CameraDescription>>((ref) async {
-  return await availableCameras();
-});
-
-class LiveSignScreen extends ConsumerStatefulWidget {
+class LiveSignScreen extends ConsumerWidget {
   const LiveSignScreen({super.key});
 
   @override
-  ConsumerState<LiveSignScreen> createState() => _LiveSignScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final gestureState = ref.watch(gestureControllerProvider);
 
-class _LiveSignScreenState extends ConsumerState<LiveSignScreen> with WidgetsBindingObserver {
-  CameraController? _cameraController;
-  bool _isCameraInitialized = false;
-  bool _isRecording = true;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    _initCamera();
-  }
-
-  Future<void> _initCamera() async {
-    try {
-      final cameras = await ref.read(camerasProvider.future);
-      if (cameras.isEmpty) return;
-
-      // Use front camera if available
-      final camera = cameras.firstWhere(
-        (c) => c.lensDirection == CameraLensDirection.front,
-        orElse: () => cameras.first,
-      );
-
-      _cameraController = CameraController(
-        camera,
-        ResolutionPreset.medium,
-        enableAudio: false,
-        imageFormatGroup: ImageFormatGroup.yuv420,
-      );
-
-      await _cameraController!.initialize();
-      if (mounted) {
-        setState(() => _isCameraInitialized = true);
-      }
-    } catch (e) {
-      debugPrint("Camera initialization error: $e");
-    }
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    _cameraController?.dispose();
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (_cameraController == null || !_cameraController!.value.isInitialized) return;
-    
-    if (state == AppLifecycleState.inactive) {
-      _cameraController?.dispose();
-    } else if (state == AppLifecycleState.resumed) {
-      _initCamera();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final signStreamValue = ref.watch(recognizedSignStreamProvider);
+    // 🔥 Word Recognition Freshness Check (1.5s animation window)
+    final bool isWordFresh =
+        gestureState.lastWordTime != null &&
+            DateTime.now().difference(gestureState.lastWordTime!) <
+                const Duration(milliseconds: 1500);
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
-          onPressed: () => context.pop(),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.volume_up, color: Colors.white),
-            onPressed: () {
-               // Demo: Speak current text
-               if (signStreamValue.hasValue && signStreamValue.value != null) {
-                 ref.read(ttsServiceProvider).speak(signStreamValue.value!);
-               }
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
+      backgroundColor: Colors.black,
       body: Stack(
-        fit: StackFit.expand,
         children: [
-          // Camera Feed or Placeholder
-          if (_isCameraInitialized && _cameraController != null)
-            SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.cover,
-                  child: SizedBox(
-                    width: _cameraController!.value.previewSize?.height ?? 1, 
-                    height: _cameraController!.value.previewSize?.width ?? 1,
-                    child: CameraPreview(_cameraController!)
-                  ),
-                ),
-            )
-          else
-            Image.network(
-              'https://images.unsplash.com/photo-1596742578443-7682af5251be', 
-              fit: BoxFit.cover,
-            ),
-            
-           // Tracking Overlay (Animated Boxes)
-           if (_isCameraInitialized)
-             _buildTrackingOverlay(),
-          
-          // Slight blur overlay for style
-          const GlassContainer(
-            borderRadius: BorderRadius.zero,
-            blur: 0, 
-            opacity: 0.0, 
-            child: SizedBox.shrink(),
+          // LAYER 1: Native Camera
+          const Positioned.fill(
+            child: NativeCameraView(),
           ),
 
-          // Main Content
-          SafeArea(
-            child: Column(
-              children: [
-                const Spacer(flex: 2),
-                
-                // Floating Transcript Panel
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: GlassContainer(
-                    blur: 20,
-                    opacity: 0.15,
-                    borderRadius: BorderRadius.circular(24),
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'DETECTED SPEECH',
-                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                color: Colors.white70,
-                                letterSpacing: 1.5,
-                              ),
+          // LAYER 2: Word Flash Overlay (Subtle Green Screen Flash)
+          IgnorePointer(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+              color: isWordFresh
+                  ? Colors.greenAccent.withOpacity(0.08)
+                  : Colors.transparent,
+            ),
+          ),
+
+          // LAYER 3: Status Indicator (Top Left)
+          Positioned(
+            top: MediaQuery.of(context).padding.top + 16,
+            left: 16,
+            child: _StatusChip(status: gestureState.status),
+          ),
+
+          // LAYER 4: Bottom UI
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsets.all(24),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [Colors.black87, Colors.transparent],
+                  stops: [0.2, 1.0],
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+
+                  // ===============================
+                  // 🔥 RECOGNIZED WORD POPUP
+                  // ===============================
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 400),
+                    opacity: isWordFresh ? 1.0 : 0.0,
+                    child: Transform.translate(
+                      offset: Offset(0, isWordFresh ? 0 : 20),
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 20),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.greenAccent,
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.greenAccent.withOpacity(0.5),
+                              blurRadius: 15,
                             ),
-                            Icon(PhosphorIcons.speakerHigh(PhosphorIconsStyle.fill), color: Colors.white70, size: 16),
                           ],
                         ),
-                        const SizedBox(height: 12),
-                        Text(
-                          signStreamValue.when(
-                            data: (data) => data,
-                            error: (_, __) => "Start signing...",
-                            loading: () => "Listening...",
-                          ),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w600,
-                            height: 1.3,
-                          ),
-                        ).animate(key: ValueKey(signStreamValue.asData?.value)).fadeIn(),
-                         const SizedBox(height: 8),
-                        Text(
-                          "Confidence: ${_isRecording ? '98%' : 'Idle'}",
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Colors.greenAccent,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.check_circle,
+                                color: Colors.black, size: 18),
+                            const SizedBox(width: 8),
+                            Text(
+                              gestureState.lastRecognizedWord ?? "",
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                letterSpacing: 1.2,
                               ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // ===============================
+                  // SENTENCE DISPLAY
+                  // ===============================
+                  if (gestureState.sentence.isNotEmpty)
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 14),
+                      margin: const EdgeInsets.only(bottom: 24),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: isWordFresh
+                              ? Colors.greenAccent.withOpacity(0.6)
+                              : Colors.white24,
+                          width: isWordFresh ? 2 : 1,
+                        ),
+                      ),
+                      child: Text(
+                        gestureState.sentence,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          letterSpacing: 3.0,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'monospace',
+                        ),
+                      ),
+                    ),
+
+                  // ===============================
+                  // LIVE DETECTION LABEL
+                  // ===============================
+                  Text(
+                    "Live Detection:",
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.6),
+                      fontSize: 12,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  // ===============================
+                  // CURRENT LETTER (LIVE)
+                  // ===============================
+                  Text(
+                    gestureState.currentGesture,
+                    style: const TextStyle(
+                      color: Colors.cyanAccent,
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black45,
+                          offset: Offset(0, 2),
+                          blurRadius: 10,
                         ),
                       ],
                     ),
                   ),
-                ).animate().slideY(begin: 0.2, end: 0, duration: 600.ms),
 
-                const Spacer(flex: 1),
-
-                // Bottom Control Dock
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 32),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _ControlBubble(
-                        icon: PhosphorIcons.keyboard(PhosphorIconsStyle.fill),
-                        onTap: () {},
-                      ),
-                      const SizedBox(width: 24),
-                      GestureDetector(
-                        onTap: () => setState(() => _isRecording = !_isRecording),
-                        child: GlassContainer(
-                          width: 80,
-                          height: 80,
-                          borderRadius: BorderRadius.circular(40),
-                          opacity: 0.2,
-                          color: _isRecording ? Colors.red : Colors.white,
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.5),
-                            width: 2,
-                          ),
-                          child: Center(
-                            child: Icon(
-                              _isRecording ? PhosphorIcons.stop(PhosphorIconsStyle.fill) : PhosphorIcons.record(PhosphorIconsStyle.fill),
-                              color: Colors.white,
-                              size: 32,
-                            ),
-                          ),
-                        ).animate(target: _isRecording ? 1 : 0).shimmer(duration: 2000.ms),
-                      ),
-                      const SizedBox(width: 24),
-                      _ControlBubble(
-                        icon: PhosphorIcons.translate(PhosphorIconsStyle.fill),
-                        onTap: () {
-                           if (signStreamValue.hasValue && signStreamValue.value != null) {
-                             ref.read(ttsServiceProvider).speak(signStreamValue.value!);
-                           }
+                  // ===============================
+                  // CLEAR BUTTON
+                  // ===============================
+                  if (gestureState.sentence.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: TextButton.icon(
+                        onPressed: () {
+                          ref
+                              .read(gestureControllerProvider.notifier)
+                              .clearSentence();
                         },
+                        icon: const Icon(Icons.backspace,
+                            size: 16, color: Colors.white54),
+                        label: const Text(
+                          "CLEAR SENTENCE",
+                          style: TextStyle(
+                              color: Colors.white54,
+                              fontSize: 12,
+                              letterSpacing: 1.5),
+                        ),
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          backgroundColor: Colors.white.withOpacity(0.05),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-              ],
+                    ),
+
+                  // ===============================
+                  // ERROR MESSAGE
+                  // ===============================
+                  if (gestureState.errorMessage != null) ...[
+                    const SizedBox(height: 16),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.red.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        gestureState.errorMessage!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: Colors.redAccent, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
             ),
           ),
         ],
       ),
     );
   }
-  
-  Widget _buildTrackingOverlay() {
-    return Center(
-      child: Container(
-        width: 250,
-        height: 250,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.greenAccent.withOpacity(0.5), width: 2),
-          borderRadius: BorderRadius.circular(20),
-        ),
-      ).animate(onPlay: (c) => c.repeat(reverse: true)).scale(begin: const Offset(1, 1), end: const Offset(1.05, 1.05), duration: 1.seconds),
-    );
-  }
 }
 
-class _ControlBubble extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onTap;
+class _StatusChip extends StatelessWidget {
+  final String status;
 
-  const _ControlBubble({required this.icon, required this.onTap});
+  const _StatusChip({required this.status});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: GlassContainer(
-        width: 50,
-        height: 50,
-        borderRadius: BorderRadius.circular(25),
-        opacity: 0.15,
-        child: Icon(icon, color: Colors.white, size: 24),
+    Color color;
+    if (status.contains("Active") || status.contains("Recognized")) {
+      color = Colors.greenAccent;
+    } else if (status.contains("Error")) {
+      color = Colors.redAccent;
+    } else {
+      color = Colors.orangeAccent;
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.black54,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: color.withOpacity(0.5)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              color: color,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(color: color.withOpacity(0.6), blurRadius: 6),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            status.toUpperCase(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
