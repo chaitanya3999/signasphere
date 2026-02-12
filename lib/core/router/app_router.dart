@@ -22,22 +22,6 @@ final appRouter = GoRouter(
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-      path: '/live-sign',
-      builder: (context, state) => const LiveSignScreen(),
-    ),
-    GoRoute(
-      path: '/avatar',
-      builder: (context, state) => const AvatarScreen(),
-    ),
-    GoRoute(
-      path: '/conversation',
-      builder: (context, state) => const ConversationScreen(),
-    ),
-    GoRoute(
-       path: '/learn',
-       builder: (context, state) => const LearnScreen(),
-    ),
-    GoRoute(
        path: '/settings',
        builder: (context, state) => const SettingsScreen(),
     ),
@@ -48,12 +32,25 @@ final appRouter = GoRouter(
       },
       routes: [
         GoRoute(
-          path: '/home', // Changed from '/' to '/home' since splash is first
+          path: '/home',
           builder: (context, state) => const HomeScreen(),
         ),
-        // Add other routes here as we build features
-        // GoRoute(path: '/live-sign', builder: ...),
-        // GoRoute(path: '/avatar', builder: ...),
+        GoRoute(
+          path: '/live-sign',
+          builder: (context, state) => const LiveSignScreen(),
+        ),
+        GoRoute(
+          path: '/avatar',
+          builder: (context, state) => const AvatarScreen(),
+        ),
+        GoRoute(
+          path: '/conversation',
+          builder: (context, state) => const ConversationScreen(),
+        ),
+        GoRoute(
+          path: '/learn',
+          builder: (context, state) => const LearnScreen(),
+        ),
       ],
     ),
   ],

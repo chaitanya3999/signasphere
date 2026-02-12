@@ -21,7 +21,13 @@ class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: IconButton(
         icon: Icon(leadingIcon ?? Icons.arrow_back_ios_new),
-        onPressed: onLeadingPressed ?? () => context.pop(),
+        onPressed: onLeadingPressed ?? () {
+          if (GoRouter.of(context).canPop()) {
+            context.pop();
+          } else {
+            context.go('/home');
+          }
+        },
       ),
       title: GlassContainer(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
