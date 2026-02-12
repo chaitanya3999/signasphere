@@ -46,6 +46,8 @@ dependencies:
   flutter_tts: ^4.2.5
   speech_to_text: ^7.3.0
   permission_handler: ^12.0.1
+  audioplayers: ^6.5.1
+  vibration: ^3.1.6
 
 dev_dependencies:
   flutter_test:
@@ -70,9 +72,52 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/quiz_data/
+    - assets/quiz_data/again/
+    - assets/quiz_data/agree/
+    - assets/quiz_data/answer/
+    - assets/quiz_data/attendance/
+    - assets/quiz_data/book/
+    - assets/quiz_data/break/
+    - assets/quiz_data/careful/
+    - assets/quiz_data/change/
+    - assets/quiz_data/chat/
+    - assets/quiz_data/congratulations/
+    - assets/quiz_data/email/
+    - assets/quiz_data/file/
+    - assets/quiz_data/good morning/
+    - assets/quiz_data/happy birthday/
+    - assets/quiz_data/home/
+    - assets/quiz_data/how are you/
+    - assets/quiz_data/hungry/
+    - assets/quiz_data/i need help/
+    - assets/quiz_data/join/
+    - assets/quiz_data/keepsmile/
+    - assets/quiz_data/meet/
+    - assets/quiz_data/mistake/
+    - assets/quiz_data/open/
+    - assets/quiz_data/opinion/
+    - assets/quiz_data/pass/
+    - assets/quiz_data/please/
+    - assets/quiz_data/practice/
+    - assets/quiz_data/pressure/
+    - assets/quiz_data/problem/
+    - assets/quiz_data/questions/
+    - assets/quiz_data/remember/
+    - assets/quiz_data/seat/
+    - assets/quiz_data/shift/
+    - assets/quiz_data/sick/
+    - assets/quiz_data/stop/
+    - assets/quiz_data/sun/
+    - assets/quiz_data/team/
+    - assets/quiz_data/thirsty/
+    - assets/quiz_data/this/
+    - assets/quiz_data/together/
+    - assets/quiz_data/understand/
+    - assets/quiz_data/wait/
+    - assets/quiz_data/where/
+    - assets/quiz_data/write/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -1,18 +1,24 @@
-import 'dart:async';
+import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../core/theme/theme_controller.dart';
 
-final conversationRepositoryProvider = Provider<ConversationRepository>((ref) => MockConversationRepository());
+// Key for storing messages
+const String _kMessagesKey = 'conversation_history';
 
-final conversationStreamProvider = StreamProvider<List<ChatMessage>>((ref) {
-  return ref.read(conversationRepositoryProvider).getMessages();
+final conversationRepositoryProvider = Provider<ConversationRepository>((ref) {
+  final prefs = ref.watch(sharedPreferencesProvider);
+  return ConversationRepository(prefs);
 });
+
+
 
 class ChatMessage {
   final String id;
   final String text;
   final bool isMe;
   final DateTime timestamp;
-  final bool isTyping; // For typing indicators
+  final bool isTyping;
 
   ChatMessage({
     required this.id,
@@ -21,74 +27,67 @@ class ChatMessage {
     required this.timestamp,
     this.isTyping = false,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'text': text,
+      'isMe': isMe,
+      'timestamp': timestamp.toIso8601String(),
+      'isTyping': isTyping,
+    };
+  }
+
+  factory ChatMessage.fromJson(Map<String, dynamic> json) {
+    return ChatMessage(
+      id: json['id'],
+      text: json['text'],
+      isMe: json['isMe'],
+      timestamp: DateTime.parse(json['timestamp']),
+      isTyping: json['isTyping'] ?? false,
+    );
+  }
 }
 
-abstract class ConversationRepository {
-  Stream<List<ChatMessage>> getMessages();
-  Future<void> sendMessage(String text);
-}
+class ConversationRepository {
+  final SharedPreferences _prefs;
 
-class MockConversationRepository implements ConversationRepository {
-  final _controller = StreamController<List<ChatMessage>>.broadcast();
-  final List<ChatMessage> _messages = [
-    ChatMessage(
-      id: '1',
-      text: "Hi! I wanted to ask about the appointment.",
-      isMe: false,
-      timestamp: DateTime.now().subtract(const Duration(minutes: 5)),
-    ),
-  ];
+  ConversationRepository(this._prefs);
 
-  MockConversationRepository() {
-    _emit();
+  List<ChatMessage> getMessages() {
+    final jsonString = _prefs.getString(_kMessagesKey);
+    if (jsonString == null) return [];
+    
+    final List<dynamic> jsonList = jsonDecode(jsonString);
+    return jsonList.map((json) => ChatMessage.fromJson(json)).toList();
   }
 
-  void _emit() {
-    _controller.add(List.from(_messages));
+  Future<void> saveMessage(ChatMessage message) async {
+    final messages = getMessages();
+    messages.add(message);
+    
+    // Keep only last 50 messages
+    if (messages.length > 50) {
+      messages.removeRange(0, messages.length - 50);
+    }
+    
+    await _saveList(messages);
   }
 
-  @override
-  Stream<List<ChatMessage>> getMessages() {
-    return _controller.stream;
+  Future<void> saveMessages(List<ChatMessage> messages) async {
+     // Keep only last 50 messages
+    if (messages.length > 50) {
+      messages.removeRange(0, messages.length - 50);
+    }
+    await _saveList(messages);
   }
 
-  @override
-  Future<void> sendMessage(String text) async {
-    // 1. Add User Message
-    _messages.add(ChatMessage(
-      id: DateTime.now().toString(),
-      text: text,
-      isMe: true,
-      timestamp: DateTime.now(),
-    ));
-    _emit();
-
-    // 2. Simulate "Partner Typing"
-    await Future.delayed(const Duration(milliseconds: 500));
-    final typingMsg = ChatMessage(id: 'typing', text: '...', isMe: false, timestamp: DateTime.now(), isTyping: true);
-    _messages.add(typingMsg);
-    _emit();
-
-    // 3. Wait random time
-    await Future.delayed(const Duration(seconds: 2));
-
-    // 4. Remove typing and add Partner Response
-    _messages.remove(typingMsg);
-    _messages.add(ChatMessage(
-      id: DateTime.now().toString(),
-      text: _generateResponse(text),
-      isMe: false,
-      timestamp: DateTime.now(),
-    ));
-    _emit();
+  Future<void> clearHistory() async {
+    await _prefs.remove(_kMessagesKey);
   }
 
-  String _generateResponse(String input) {
-    input = input.toLowerCase();
-    if (input.contains("hello") || input.contains("hi")) return "Hello! How can I help you today?";
-    if (input.contains("time")) return "It is currently 2:30 PM.";
-    if (input.contains("name")) return "I am your Signasphere assistant.";
-    if (input.contains("thank")) return "You're welcome!";
-    return "I understand. Could you tell me more?";
+  Future<void> _saveList(List<ChatMessage> messages) async {
+    final jsonList = messages.map((m) => m.toJson()).toList();
+    await _prefs.setString(_kMessagesKey, jsonEncode(jsonList));
   }
 }

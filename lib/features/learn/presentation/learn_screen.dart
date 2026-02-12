@@ -2,59 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/widgets/glass_container.dart';
-import '../../../../core/theme/theme_controller.dart';
-
-final learnProgressProvider = NotifierProvider<LearnProgressNotifier, Map<String, double>>(LearnProgressNotifier.new);
-
-class LearnProgressNotifier extends Notifier<Map<String, double>> {
-  @override
-  Map<String, double> build() {
-    final prefs = ref.watch(sharedPreferencesProvider);
-    return {
-      "basics": prefs.getDouble("progress_basics") ?? 0.0,
-      "greetings": prefs.getDouble("progress_greetings") ?? 0.0,
-      "emergency": prefs.getDouble("progress_emergency") ?? 0.0,
-    };
-  }
-
-  Future<void> updateProgress(String moduleId, double value) async {
-    state = {...state, moduleId: value};
-    final prefs = ref.read(sharedPreferencesProvider); // Read directly for side effects
-    await prefs.setDouble("progress_$moduleId", value);
-  }
-}
+import '../../../../core/widgets/glass_app_bar.dart';
+import '../domain/quiz_models.dart';
+import 'learn_controller.dart';
+import 'quiz_session_screen.dart';
 
 class LearnScreen extends ConsumerWidget {
   const LearnScreen({super.key});
 
+  void _startQuizSession(BuildContext context, WidgetRef ref, QuizType? type) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => QuizSessionScreen(quizType: type),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final progress = ref.watch(learnProgressProvider);
+    final state = ref.watch(learnControllerProvider);
+
+    if (state.isLoading) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () => context.pop(),
-        ),
-        title: const Text('Learn Signs'),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      appBar: const GlassAppBar(
+        title: 'Learn Signs',
+        leadingIcon: Icons.arrow_back_ios_new,
       ),
       body: Stack(
         children: [
-          // Background
+          // Background Gradient
            Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
                   Theme.of(context).scaffoldBackgroundColor,
-                  Colors.pinkAccent.withOpacity(0.05),
+                  Colors.blueAccent.withOpacity(0.05),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -63,162 +50,119 @@ class LearnScreen extends ConsumerWidget {
           ),
           
           ListView(
-            padding: const EdgeInsets.fromLTRB(20, 100, 20, 100),
+            padding: const EdgeInsets.fromLTRB(20, 120, 20, 100),
             children: [
-              // Statistics Header
+              // ----------------------------------------------------
+              // Section 1: Stats Panel
+              // ----------------------------------------------------
               GlassContainer(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
                 opacity: 0.1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child: Column(
                   children: [
-                    _StatItem(label: 'Streak', value: '3 Days', icon: Icons.local_fire_department, color: Colors.orange),
-                    _StatItem(label: 'XP', value: '450', icon: Icons.star, color: Colors.yellow),
-                    _StatItem(label: 'Level', value: '2', icon: Icons.military_tech, color: Colors.green),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _StatItem(label: 'Level', value: '${state.level}', icon: Icons.military_tech, color: Colors.amber),
+                        _StatItem(label: 'XP', value: '${state.xp}', icon: Icons.star, color: Colors.orange),
+                        _StatItem(label: 'Streak', value: '${state.streak}', icon: Icons.local_fire_department, color: Colors.redAccent),
+                      ],
+                    ),
+                    const Divider(color: Colors.white24, height: 32),
+                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _StatItem(label: 'Quizzes', value: '${state.totalQuizzesPlayed}', icon: Icons.quiz, color: Colors.blueAccent),
+                        _StatItem(label: 'Accuracy', value: '${(state.accuracy * 100).toStringAsFixed(0)}%', icon: Icons.track_changes, color: Colors.green),
+                        _StatItem(label: 'Known', value: '${state.knownWordsCount}', icon: Icons.bookmark, color: Colors.purpleAccent),
+                      ],
+                    ),
                   ],
                 ),
-              ).animate().slideY(begin: -0.2, end: 0),
+              ).animate().slideY(begin: -0.2, end: 0).fadeIn(),
 
-              const SizedBox(height: 24),
-
-              const Text('Modules', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 32),
+              
+              const Text('Start Learning', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
 
-              _ModuleCard(
-                title: "Basics: Alphabet",
-                subtitle: "Learn A-Z handshapes",
-                progress: progress["basics"] ?? 0.0,
-                color: Colors.purpleAccent,
+              // ----------------------------------------------------
+              // Section 2: Quiz Type Cards
+              // ----------------------------------------------------
+
+              // 1. Full Test Mode (Hero Card)
+              GestureDetector(
+                onTap: () => _startQuizSession(context, ref, null), // null means Full Test
+                child: GlassContainer(
+                  height: 120,
+                  opacity: 0.15,
+                  gradient: const LinearGradient(colors: [Colors.indigoAccent, Colors.deepPurpleAccent]),
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                     children: [
+                       Container(
+                         padding: const EdgeInsets.all(12),
+                         decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), shape: BoxShape.circle),
+                         child: Icon(PhosphorIcons.exam(PhosphorIconsStyle.fill), size: 40, color: Colors.white),
+                       ),
+                       const SizedBox(width: 20),
+                       const Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                            Text("Full Assessment", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                            Text("Mix all quiz types", style: TextStyle(fontSize: 12, color: Colors.white70)),
+                         ],
+                       ),
+                       const Spacer(),
+                       const Icon(Icons.arrow_forward_ios, color: Colors.white70),
+                     ],
+                  ),
+                ),
+              ).animate().fadeIn().scale().moveX(),
+              
+              const SizedBox(height: 16),
+
+              // 2. Guess the Word
+              _QuizTypeCard(
+                title: "Guess the Word",
+                subtitle: "Identify the sign from options",
                 icon: PhosphorIcons.textAa(PhosphorIconsStyle.fill),
-                delay: 200,
-                onTap: () => _showQuiz(context, ref, "basics", "Alphabet Quiz", ["A", "B", "C"], "A"),
+                color: Colors.pinkAccent,
+                onTap: () => _startQuizSession(context, ref, QuizType.guessWord),
               ),
-              const SizedBox(height: 16),
-              _ModuleCard(
-                title: "Greetings",
-                subtitle: "Hello, Goodbye, Thank you",
-                progress: progress["greetings"] ?? 0.0,
-                color: Colors.blueAccent,
-                icon: PhosphorIcons.handGrabbing(PhosphorIconsStyle.fill),
-                delay: 300,
-                onTap: () => _showQuiz(context, ref, "greetings", "Greetings Quiz", ["Hello", "Bye", "Thanks"], "Hello"),
+
+              // 3. Select Correct Sign
+              _QuizTypeCard(
+                title: "Select Correct Sign",
+                subtitle: "Match text to the right image",
+                icon: PhosphorIcons.image(PhosphorIconsStyle.fill),
+                color: Colors.cyanAccent,
+                onTap: () => _startQuizSession(context, ref, QuizType.selectSign),
               ),
-              const SizedBox(height: 16),
-               _ModuleCard(
-                title: "Emergency Signs",
-                subtitle: "Help, Doctor, Pain",
-                progress: progress["emergency"] ?? 0.0,
-                color: Colors.redAccent,
-                icon: PhosphorIcons.siren(PhosphorIconsStyle.fill),
-                delay: 400,
-                onTap: () => _showQuiz(context, ref, "emergency", "Emergency Quiz", ["Help", "Doctor", "Fire"], "Help"),
+
+              // 4. Match Pairs
+              _QuizTypeCard(
+                title: "Match the Pair",
+                subtitle: "Connect words with signs",
+                icon: PhosphorIcons.link(PhosphorIconsStyle.fill),
+                color: Colors.tealAccent,
+                onTap: () => _startQuizSession(context, ref, QuizType.matchPair),
+              ),
+
+               // 5. Flashcards
+              _QuizTypeCard(
+                title: "Flashcards",
+                subtitle: "Swipe to learn new signs",
+                icon: PhosphorIcons.cards(PhosphorIconsStyle.fill),
+                color: Colors.orangeAccent,
+                onTap: () => _startQuizSession(context, ref, QuizType.flashcard),
               ),
             ],
           ),
         ],
       ),
     );
-  }
-
-  void _showQuiz(BuildContext context, WidgetRef ref, String moduleId, String title, List<String> options, String correctAnswer) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (c) => _QuizSheet(
-        moduleId: moduleId, 
-        title: title, 
-        options: options, 
-        correctAnswer: correctAnswer,
-        onComplete: (score) {
-           ref.read(learnProgressProvider.notifier).updateProgress(moduleId, score);
-        },
-      ),
-    );
-  }
-}
-
-class _QuizSheet extends StatefulWidget {
-  final String moduleId;
-  final String title;
-  final List<String> options;
-  final String correctAnswer;
-  final Function(double) onComplete;
-
-  const _QuizSheet({
-    required this.moduleId, 
-    required this.title, 
-    required this.options, 
-    required this.correctAnswer,
-    required this.onComplete,
-  });
-
-  @override
-  State<_QuizSheet> createState() => _QuizSheetState();
-}
-
-class _QuizSheetState extends State<_QuizSheet> {
-  String? _selected;
-  bool _completed = false;
-
-  @override
-  Widget build(BuildContext context) {
-     return Container(
-       height: 500,
-       padding: const EdgeInsets.all(24),
-       decoration: BoxDecoration(
-         color: Theme.of(context).scaffoldBackgroundColor,
-         borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-       ),
-       child: Column(
-         crossAxisAlignment: CrossAxisAlignment.stretch,
-         children: [
-            Text(widget.title, style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: 32),
-            GlassContainer(
-              height: 150,
-              opacity: 0.1,
-              child: Center(
-                child: Icon(PhosphorIcons.handWaving(PhosphorIconsStyle.fill), size: 80, color: Theme.of(context).primaryColor),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Text("What does this sign mean?", textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 24),
-            ...widget.options.map((opt) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: _selected == opt 
-                      ? (opt == widget.correctAnswer ? Colors.green : Colors.red) 
-                      : Theme.of(context).colorScheme.surface,
-                  foregroundColor: _selected == opt ? Colors.white : Theme.of(context).colorScheme.onSurface,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
-                onPressed: _completed ? null : () {
-                  setState(() {
-                    _selected = opt;
-                    _completed = true;
-                  });
-                  if (opt == widget.correctAnswer) {
-                     Future.delayed(const Duration(seconds: 1), () {
-                       widget.onComplete(1.0); // 100% progress
-                       Navigator.pop(context);
-                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Correct! +50 XP")));
-                     });
-                  } else {
-                     Future.delayed(const Duration(seconds: 1), () {
-                        Navigator.pop(context);
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Try Again!")));
-                     });
-                  }
-                },
-                child: Text(opt),
-              ),
-            )).toList(),
-         ],
-       ),
-     );
   }
 }
 
@@ -234,80 +178,71 @@ class _StatItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(icon, color: color, size: 28),
+        Icon(icon, color: color, size: 24),
         const SizedBox(height: 4),
         Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        Text(label, style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        Text(label, style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
       ],
     );
   }
 }
 
-class _ModuleCard extends StatelessWidget {
+class _QuizTypeCard extends StatelessWidget {
   final String title;
   final String subtitle;
-  final double progress;
-  final Color color;
   final IconData icon;
-  final int delay;
+  final Color color;
   final VoidCallback onTap;
 
-  const _ModuleCard({
+  const _QuizTypeCard({
     required this.title,
     required this.subtitle,
-    required this.progress,
-    required this.color,
     required this.icon,
-    required this.delay,
+    required this.color,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: GlassContainer(
-        height: 100,
-        opacity: 0.05,
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(15),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: GestureDetector(
+        onTap: onTap,
+        child: GlassContainer(
+          height: 90,
+          opacity: 0.05,
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Icon(icon, color: color, size: 28),
               ),
-              child: Icon(icon, color: color, size: 30),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                  Text(subtitle, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 12)),
-                  const SizedBox(height: 8),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: LinearProgressIndicator(
-                      value: progress,
-                      backgroundColor: Colors.grey.withOpacity(0.2),
-                      valueColor: AlwaysStoppedAnimation(color),
-                      minHeight: 4,
-                    ),
-                  ),
-                ],
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    Text(subtitle, style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6))),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Icon(progress >= 1.0 ? Icons.check_circle : Icons.play_circle_fill, 
-                color: progress >= 1.0 ? Colors.green : color.withOpacity(0.5), size: 32),
-          ],
-        ),
-      ).animate().fadeIn(delay: delay.ms).slideX(),
+              const SizedBox(width: 12),
+              GlassContainer(
+                width: 30, height: 30, borderRadius: BorderRadius.circular(10), opacity: 0.1,
+                child: const Icon(Icons.play_arrow, size: 16),
+              )
+            ],
+          ),
+        ).animate().fadeIn().slideX(),
+      ),
     );
   }
 }
