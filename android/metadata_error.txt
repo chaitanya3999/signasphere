@@ -1,0 +1,1354 @@
+Initialized native services in: /Users/chaitanya/.gradle/native
+Initialized jansi services in: /Users/chaitanya/.gradle/native
+Found daemon DaemonInfo{pid=3057, address=[2e0b0a94-0267-4f64-8ec0-1acfcb31492e port:49257, addresses:[/127.0.0.1]], state=Idle, lastBusy=1770951926873, context=DefaultDaemonContext[uid=3da57317-c523-4469-9c88-cf0592159905,javaHome=/Applications/Android Studio.app/Contents/jbr/Contents/Home,javaVersion=21,javaVendor=JetBrains s.r.o.,daemonRegistryDir=/Users/chaitanya/.gradle/daemon,pid=3057,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=4G,-XX:ReservedCodeCacheSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx8G,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]} however its context does not match the desired criteria.
+JVM is incompatible.
+Wanted: DaemonRequestContext{jvmCriteria=/Library/Java/JavaVirtualMachines/jdk-23.jdk/Contents/Home (no JDK specified, using current Java home), daemonOpts=[-XX:MaxMetaspaceSize=4G, -XX:ReservedCodeCacheSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx8G, -Dfile.encoding=UTF-8, -Duser.country=US, -Duser.language=en, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+Actual: DefaultDaemonContext[uid=3da57317-c523-4469-9c88-cf0592159905,javaHome=/Applications/Android Studio.app/Contents/jbr/Contents/Home,javaVersion=21,javaVendor=JetBrains s.r.o.,daemonRegistryDir=/Users/chaitanya/.gradle/daemon,pid=3057,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=4G,-XX:ReservedCodeCacheSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx8G,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+
+  Looking for a different daemon...
+The client will now receive all logging from the daemon (pid: 6263). The daemon log file: /Users/chaitanya/.gradle/daemon/8.14/daemon-6263.out.log
+Starting 12th build in daemon [uptime: 10 mins 54.215 secs, performance: 99%, GC rate: 0.00/s, heap usage: 0% of 8 GiB, non-heap usage: 6% of 4 GiB]
+Using 8 worker leases.
+Now considering [/Users/chaitanya/StudioProjects/signasphere/android, /Users/chaitanya/flutter/packages/flutter_tools/gradle] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Now considering [/Users/chaitanya/flutter/packages/flutter_tools/gradle, /Users/chaitanya/StudioProjects/signasphere/android] as hierarchies to watch
+
+> Configure project :gradle
+Evaluating project ':gradle' using build file '/Users/chaitanya/flutter/packages/flutter_tools/gradle/build.gradle.kts'.
+Resolved plugin [id: 'org.gradle.java-gradle-plugin']
+Resolved plugin [id: 'org.gradle.groovy']
+Resolved plugin [id: 'org.gradle.kotlin.kotlin-dsl', version: '5.2.0']
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '1.9.20']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+file or directory '/Users/chaitanya/flutter/packages/flutter_tools/gradle/src/main/java', not found
+Resolved plugin [id: 'dev.flutter.flutter-plugin-loader', version: '1.0.0']
+Resolved plugin [id: 'com.android.application', version: '8.11.1', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.2.20', apply: false]
+Resolve mutations for :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[#1359,Execution worker,5,main]) started.
+:gradle:checkKotlinGradlePluginConfigurationErrors (Thread[#1359,Execution worker,5,main]) started.
+
+> Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :gradle:compileKotlin (Thread[#1359,Execution worker,5,main]) started.
+:gradle:compileKotlin (Thread[#1359,Execution worker,5,main]) started.
+
+> Task :gradle:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle:compileKotlin' as it is up-to-date.
+Resolve mutations for :gradle:compileJava (Thread[#1359,Execution worker,5,main]) started.
+:gradle:compileJava (Thread[#1359,Execution worker,5,main]) started.
+
+> Task :gradle:compileJava NO-SOURCE
+Skipping task ':gradle:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :gradle:compileGroovy (Thread[#1359,Execution worker,5,main]) started.
+:gradle:compileGroovy (Thread[#1359,Execution worker,5,main]) started.
+
+> Task :gradle:compileGroovy NO-SOURCE
+Skipping task ':gradle:compileGroovy' as it has no source files and no previous output files.
+Resolve mutations for :gradle:pluginDescriptors (Thread[#1359,Execution worker,5,main]) started.
+:gradle:pluginDescriptors (Thread[#1359,Execution worker,5,main]) started.
+
+> Task :gradle:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':gradle:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :gradle:processResources (Thread[#1359,Execution worker,5,main]) started.
+:gradle:processResources (Thread[#1359,Execution worker,5,main]) started.
+
+> Task :gradle:processResources UP-TO-DATE
+Caching disabled for task ':gradle:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle:processResources' as it is up-to-date.
+Resolve mutations for :gradle:classes (Thread[#1359,Execution worker,5,main]) started.
+:gradle:classes (Thread[#1359,Execution worker,5,main]) started.
+
+> Task :gradle:classes UP-TO-DATE
+Skipping task ':gradle:classes' as it has no actions.
+Resolve mutations for :gradle:jar (Thread[#1365,Execution worker Thread 7,5,main]) started.
+:gradle:jar (Thread[#1365,Execution worker Thread 7,5,main]) started.
+
+> Task :gradle:jar UP-TO-DATE
+Caching disabled for task ':gradle:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle:jar' as it is up-to-date.
+Settings evaluated using settings file '/Users/chaitanya/StudioProjects/signasphere/android/settings.gradle.kts'.
+Projects loaded. Root project using build file '/Users/chaitanya/StudioProjects/signasphere/android/build.gradle.kts'.
+Included projects: [root project 'android', project ':app', project ':audioplayers_android', project ':camera_android_camerax', project ':device_info_plus', project ':flutter_plugin_android_lifecycle', project ':flutter_tts', project ':path_provider_android', project ':permission_handler_android', project ':shared_preferences_android', project ':speech_to_text', project ':vibration']
+
+> Configure project :app
+Evaluating project ':app' using build file '/Users/chaitanya/StudioProjects/signasphere/android/app/build.gradle.kts'.
+Resolved plugin [id: 'com.android.application']
+Resolved plugin [id: 'kotlin-android']
+Resolved plugin [id: 'dev.flutter.flutter-gradle-plugin']
+Using default execution profile
+Build 85c0e1f0-ecf4-4afd-936d-7354740ec6d6 is started
+Using Kotlin Gradle Plugin gradle813 variant
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by plugin 'dev.flutter.flutter-gradle-plugin'
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/chaitanya/Library/Android/sdk
+
+> Configure project :
+Evaluating root project 'android' using build file '/Users/chaitanya/StudioProjects/signasphere/android/build.gradle.kts'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle.kts'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo' was added by build file 'build.gradle.kts'
+
+> Configure project :audioplayers_android
+Evaluating project ':audioplayers_android' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo2' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/audioplayers_android-5.2.1/android/build.gradle'
+
+> Configure project :camera_android_camerax
+Evaluating project ':camera_android_camerax' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo3' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.30/android/build.gradle'
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+
+> Configure project :device_info_plus
+Evaluating project ':device_info_plus' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo4' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/device_info_plus-12.3.0/android/build.gradle'
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+
+> Configure project :flutter_plugin_android_lifecycle
+Evaluating project ':flutter_plugin_android_lifecycle' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo5' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.33/android/build.gradle'
+Using default execution profile
+
+> Configure project :flutter_tts
+Evaluating project ':flutter_tts' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo6' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/flutter_tts-4.2.5/android/build.gradle'
+
+> Configure project :path_provider_android
+Evaluating project ':path_provider_android' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo7' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/path_provider_android-2.2.22/android/build.gradle'
+Using default execution profile
+
+> Configure project :permission_handler_android
+Evaluating project ':permission_handler_android' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo8' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/permission_handler_android-13.0.1/android/build.gradle'
+Using default execution profile
+
+> Configure project :shared_preferences_android
+Evaluating project ':shared_preferences_android' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo9' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.20/android/build.gradle'
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+
+> Configure project :speech_to_text
+Evaluating project ':speech_to_text' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo10' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/speech_to_text-7.3.0/android/build.gradle'
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+
+> Configure project :vibration
+Evaluating project ':vibration' using build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'.
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo12' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo12' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'Google11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Build was configured to prefer settings repositories over project repositories but repository 'MavenRepo11' was added by build file '/Users/chaitanya/.pub-cache/hosted/pub.dev/vibration-3.1.6/android/build.gradle'
+Using default execution profile
+All projects evaluated.
+Task path ':app:checkDebugAarMetadata' matched project ':app'
+Task name matched 'checkDebugAarMetadata'
+Selected primary task 'checkDebugAarMetadata' from project :app
+Tasks to be executed: [task ':app:compileFlutterBuildDebug', task ':app:packJniLibsflutterBuildDebug', task ':app:preBuild', task ':app:preDebugBuild', task ':audioplayers_android:preBuild', task ':audioplayers_android:preDebugBuild', task ':audioplayers_android:writeDebugAarMetadata', task ':camera_android_camerax:preBuild', task ':camera_android_camerax:preDebugBuild', task ':camera_android_camerax:writeDebugAarMetadata', task ':device_info_plus:preBuild', task ':device_info_plus:preDebugBuild', task ':device_info_plus:writeDebugAarMetadata', task ':flutter_plugin_android_lifecycle:preBuild', task ':flutter_plugin_android_lifecycle:preDebugBuild', task ':flutter_plugin_android_lifecycle:writeDebugAarMetadata', task ':flutter_tts:preBuild', task ':flutter_tts:preDebugBuild', task ':flutter_tts:writeDebugAarMetadata', task ':path_provider_android:preBuild', task ':path_provider_android:preDebugBuild', task ':path_provider_android:writeDebugAarMetadata', task ':permission_handler_android:preBuild', task ':permission_handler_android:preDebugBuild', task ':permission_handler_android:writeDebugAarMetadata', task ':shared_preferences_android:preBuild', task ':shared_preferences_android:preDebugBuild', task ':shared_preferences_android:writeDebugAarMetadata', task ':speech_to_text:preBuild', task ':speech_to_text:preDebugBuild', task ':speech_to_text:writeDebugAarMetadata', task ':vibration:preBuild', task ':vibration:preDebugBuild', task ':vibration:writeDebugAarMetadata', task ':app:checkDebugAarMetadata']
+Tasks that were excluded: []
+Resolve mutations for :app:compileFlutterBuildDebug (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:app:compileFlutterBuildDebug (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :app:compileFlutterBuildDebug UP-TO-DATE
+Caching disabled for task ':app:compileFlutterBuildDebug' because:
+  Build cache is disabled
+  Caching has not been enabled for the task
+Skipping task ':app:compileFlutterBuildDebug' as it is up-to-date.
+Resolve mutations for :app:packJniLibsflutterBuildDebug (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:app:packJniLibsflutterBuildDebug (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :app:packJniLibsflutterBuildDebug UP-TO-DATE
+Caching disabled for task ':app:packJniLibsflutterBuildDebug' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':app:packJniLibsflutterBuildDebug' as it is up-to-date.
+Resolve mutations for :app:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:app:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :app:preBuild UP-TO-DATE
+Skipping task ':app:preBuild' as it has no actions.
+Resolve mutations for :app:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:app:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :app:preDebugBuild UP-TO-DATE
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :audioplayers_android:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:audioplayers_android:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :audioplayers_android:preBuild UP-TO-DATE
+Skipping task ':audioplayers_android:preBuild' as it has no actions.
+Resolve mutations for :audioplayers_android:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:audioplayers_android:preDebugBuild (Thread[#1360,Execution worker Thread 2,5,main]) started.
+
+> Task :audioplayers_android:preDebugBuild UP-TO-DATE
+Skipping task ':audioplayers_android:preDebugBuild' as it has no actions.
+Resolve mutations for :audioplayers_android:writeDebugAarMetadata (Thread[#1360,Execution worker Thread 2,5,main]) started.
+:audioplayers_android:writeDebugAarMetadata (Thread[#1360,Execution worker Thread 2,5,main]) started.
+
+> Task :audioplayers_android:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':audioplayers_android:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':audioplayers_android:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :audioplayers_android) (Thread[#1360,Execution worker Thread 2,5,main]) started.
+Resolve mutations for :camera_android_camerax:preBuild (Thread[#1360,Execution worker Thread 2,5,main]) started.
+:camera_android_camerax:preBuild (Thread[#1360,Execution worker Thread 2,5,main]) started.
+
+> Task :camera_android_camerax:preBuild UP-TO-DATE
+Skipping task ':camera_android_camerax:preBuild' as it has no actions.
+Resolve mutations for :camera_android_camerax:preDebugBuild (Thread[#1360,Execution worker Thread 2,5,main]) started.
+:camera_android_camerax:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :camera_android_camerax:preDebugBuild UP-TO-DATE
+Skipping task ':camera_android_camerax:preDebugBuild' as it has no actions.
+Resolve mutations for :camera_android_camerax:writeDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:camera_android_camerax:writeDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :camera_android_camerax:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':camera_android_camerax:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':camera_android_camerax:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :camera_android_camerax) (Thread[#1364,Execution worker Thread 6,5,main]) started.
+Resolve mutations for :device_info_plus:preBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:device_info_plus:preBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :device_info_plus:preBuild UP-TO-DATE
+Skipping task ':device_info_plus:preBuild' as it has no actions.
+Resolve mutations for :device_info_plus:preDebugBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:device_info_plus:preDebugBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :device_info_plus:preDebugBuild UP-TO-DATE
+Skipping task ':device_info_plus:preDebugBuild' as it has no actions.
+Resolve mutations for :device_info_plus:writeDebugAarMetadata (Thread[#1363,Execution worker Thread 5,5,main]) started.
+:device_info_plus:writeDebugAarMetadata (Thread[#1363,Execution worker Thread 5,5,main]) started.
+
+> Task :device_info_plus:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':device_info_plus:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':device_info_plus:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :device_info_plus) (Thread[#1363,Execution worker Thread 5,5,main]) started.
+Resolve mutations for :flutter_plugin_android_lifecycle:preBuild (Thread[#1363,Execution worker Thread 5,5,main]) started.
+:flutter_plugin_android_lifecycle:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :flutter_plugin_android_lifecycle:preBuild UP-TO-DATE
+Skipping task ':flutter_plugin_android_lifecycle:preBuild' as it has no actions.
+Resolve mutations for :flutter_plugin_android_lifecycle:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:flutter_plugin_android_lifecycle:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :flutter_plugin_android_lifecycle:preDebugBuild UP-TO-DATE
+Skipping task ':flutter_plugin_android_lifecycle:preDebugBuild' as it has no actions.
+Resolve mutations for :flutter_plugin_android_lifecycle:writeDebugAarMetadata (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:flutter_plugin_android_lifecycle:writeDebugAarMetadata (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :flutter_plugin_android_lifecycle:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':flutter_plugin_android_lifecycle:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':flutter_plugin_android_lifecycle:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :flutter_plugin_android_lifecycle) (Thread[#1361,Execution worker Thread 3,5,main]) started.
+Resolve mutations for :flutter_tts:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:flutter_tts:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :flutter_tts:preBuild UP-TO-DATE
+Skipping task ':flutter_tts:preBuild' as it has no actions.
+Resolve mutations for :flutter_tts:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:flutter_tts:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :flutter_tts:preDebugBuild UP-TO-DATE
+Skipping task ':flutter_tts:preDebugBuild' as it has no actions.
+Resolve mutations for :flutter_tts:writeDebugAarMetadata (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:flutter_tts:writeDebugAarMetadata (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :flutter_tts:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':flutter_tts:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':flutter_tts:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :flutter_tts) (Thread[#1361,Execution worker Thread 3,5,main]) started.
+Resolve mutations for :path_provider_android:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:path_provider_android:preBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :path_provider_android:preBuild UP-TO-DATE
+Skipping task ':path_provider_android:preBuild' as it has no actions.
+Resolve mutations for :path_provider_android:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:path_provider_android:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :path_provider_android:preDebugBuild UP-TO-DATE
+Skipping task ':path_provider_android:preDebugBuild' as it has no actions.
+Resolve mutations for :path_provider_android:writeDebugAarMetadata (Thread[#1358,included builds,5,main]) started.
+:path_provider_android:writeDebugAarMetadata (Thread[#1358,included builds,5,main]) started.
+
+> Task :path_provider_android:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':path_provider_android:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':path_provider_android:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :path_provider_android) (Thread[#1358,included builds,5,main]) started.
+Resolve mutations for :permission_handler_android:preBuild (Thread[#1358,included builds,5,main]) started.
+:permission_handler_android:preBuild (Thread[#1358,included builds,5,main]) started.
+
+> Task :permission_handler_android:preBuild UP-TO-DATE
+Skipping task ':permission_handler_android:preBuild' as it has no actions.
+Resolve mutations for :permission_handler_android:preDebugBuild (Thread[#1358,included builds,5,main]) started.
+:permission_handler_android:preDebugBuild (Thread[#1358,included builds,5,main]) started.
+
+> Task :permission_handler_android:preDebugBuild UP-TO-DATE
+Skipping task ':permission_handler_android:preDebugBuild' as it has no actions.
+Resolve mutations for :permission_handler_android:writeDebugAarMetadata (Thread[#1358,included builds,5,main]) started.
+:permission_handler_android:writeDebugAarMetadata (Thread[#1358,included builds,5,main]) started.
+
+> Task :permission_handler_android:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':permission_handler_android:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':permission_handler_android:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :permission_handler_android) (Thread[#1358,included builds,5,main]) started.
+Resolve mutations for :shared_preferences_android:preBuild (Thread[#1358,included builds,5,main]) started.
+:shared_preferences_android:preBuild (Thread[#1358,included builds,5,main]) started.
+
+> Task :shared_preferences_android:preBuild UP-TO-DATE
+Skipping task ':shared_preferences_android:preBuild' as it has no actions.
+Resolve mutations for :shared_preferences_android:preDebugBuild (Thread[#1358,included builds,5,main]) started.
+:shared_preferences_android:preDebugBuild (Thread[#1361,Execution worker Thread 3,5,main]) started.
+
+> Task :shared_preferences_android:preDebugBuild UP-TO-DATE
+Skipping task ':shared_preferences_android:preDebugBuild' as it has no actions.
+Resolve mutations for :shared_preferences_android:writeDebugAarMetadata (Thread[#1361,Execution worker Thread 3,5,main]) started.
+:shared_preferences_android:writeDebugAarMetadata (Thread[#1365,Execution worker Thread 7,5,main]) started.
+
+> Task :shared_preferences_android:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':shared_preferences_android:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':shared_preferences_android:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :shared_preferences_android) (Thread[#1365,Execution worker Thread 7,5,main]) started.
+Resolve mutations for :speech_to_text:preBuild (Thread[#1365,Execution worker Thread 7,5,main]) started.
+:speech_to_text:preBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :speech_to_text:preBuild UP-TO-DATE
+Skipping task ':speech_to_text:preBuild' as it has no actions.
+Resolve mutations for :speech_to_text:preDebugBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:speech_to_text:preDebugBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :speech_to_text:preDebugBuild UP-TO-DATE
+Skipping task ':speech_to_text:preDebugBuild' as it has no actions.
+Resolve mutations for :speech_to_text:writeDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:speech_to_text:writeDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :speech_to_text:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':speech_to_text:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':speech_to_text:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :speech_to_text) (Thread[#1364,Execution worker Thread 6,5,main]) started.
+Resolve mutations for :vibration:preBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:vibration:preBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :vibration:preBuild UP-TO-DATE
+Skipping task ':vibration:preBuild' as it has no actions.
+Resolve mutations for :vibration:preDebugBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:vibration:preDebugBuild (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :vibration:preDebugBuild UP-TO-DATE
+Skipping task ':vibration:preDebugBuild' as it has no actions.
+Resolve mutations for :vibration:writeDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:vibration:writeDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :vibration:writeDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':vibration:writeDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':vibration:writeDebugAarMetadata' as it is up-to-date.
+work action resolve aar-metadata.properties (project :vibration) (Thread[#1364,Execution worker Thread 6,5,main]) started.
+Resolve mutations for :app:checkDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+:app:checkDebugAarMetadata (Thread[#1364,Execution worker Thread 6,5,main]) started.
+
+> Task :app:checkDebugAarMetadata
+Resource missing. [HTTP HEAD: https://dl.google.com/dl/android/maven2/io/flutter/armeabi_v7a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/armeabi_v7a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+Resource missing. [HTTP HEAD: https://repo.maven.apache.org/maven2/io/flutter/armeabi_v7a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/armeabi_v7a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+Resource missing. [HTTP HEAD: https://dl.google.com/dl/android/maven2/io/flutter/arm64_v8a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/arm64_v8a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+Resource missing. [HTTP HEAD: https://repo.maven.apache.org/maven2/io/flutter/arm64_v8a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/arm64_v8a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+Resource missing. [HTTP HEAD: https://dl.google.com/dl/android/maven2/io/flutter/x86_64_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/x86_64_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+Resource missing. [HTTP HEAD: https://repo.maven.apache.org/maven2/io/flutter/x86_64_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/x86_64_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+Resource missing. [HTTP HEAD: https://dl.google.com/dl/android/maven2/io/flutter/flutter_embedding_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/flutter_embedding_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+Resource missing. [HTTP HEAD: https://repo.maven.apache.org/maven2/io/flutter/flutter_embedding_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/flutter_embedding_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom]
+
+> Task :app:checkDebugAarMetadata FAILED
+Build 85c0e1f0-ecf4-4afd-936d-7354740ec6d6 is closed
+
+[Incubating] Problems report is available at: file:///Users/chaitanya/StudioProjects/signasphere/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:checkDebugAarMetadata'.
+> Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+   > Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+      > Could not find io.flutter:armeabi_v7a_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+        Searched in the following locations:
+          - https://dl.google.com/dl/android/maven2/io/flutter/armeabi_v7a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/armeabi_v7a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+          - https://repo.maven.apache.org/maven2/io/flutter/armeabi_v7a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/armeabi_v7a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+        Required by:
+            project :app
+   > Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+      > Could not find io.flutter:arm64_v8a_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+        Searched in the following locations:
+          - https://dl.google.com/dl/android/maven2/io/flutter/arm64_v8a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/arm64_v8a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+          - https://repo.maven.apache.org/maven2/io/flutter/arm64_v8a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/arm64_v8a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+        Required by:
+            project :app
+   > Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+      > Could not find io.flutter:x86_64_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+        Searched in the following locations:
+          - https://dl.google.com/dl/android/maven2/io/flutter/x86_64_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/x86_64_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+          - https://repo.maven.apache.org/maven2/io/flutter/x86_64_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/x86_64_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+        Required by:
+            project :app
+   > Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+      > Could not find io.flutter:flutter_embedding_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+        Searched in the following locations:
+          - https://dl.google.com/dl/android/maven2/io/flutter/flutter_embedding_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/flutter_embedding_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+          - https://repo.maven.apache.org/maven2/io/flutter/flutter_embedding_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/flutter_embedding_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+        Required by:
+            project :app > project :audioplayers_android
+            project :app > project :camera_android_camerax
+            project :app > project :device_info_plus
+            project :app > project :flutter_plugin_android_lifecycle
+            project :app > project :flutter_tts
+            project :app > project :path_provider_android
+            project :app > project :permission_handler_android
+            project :app > project :shared_preferences_android
+            project :app > project :speech_to_text
+            project :app > project :vibration
+
+* Try:
+> The project declares repositories, effectively ignoring the repositories you have declared in the settings.
+   To determine how project repositories are declared, configure your build to fail on project repositories.
+   For more information, please refer to https://docs.gradle.org/8.14/userguide/declaring_repositories.html#sub:fail_build_on_project_repositories in the Gradle documentation.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:checkDebugAarMetadata'.
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailures(ResolveExceptionMapper.java:61)
+	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.consolidateFailures(DefaultConfiguration.java:1931)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailuresAndReportProblems(ResolutionHost.java:75)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:86)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:76)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:66)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:91)
+	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Cause 1: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapRepositoryOverrideFailure(ResolveExceptionMapper.java:108)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.lambda$mapFailures$0(ResolveExceptionMapper.java:60)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailures(ResolveExceptionMapper.java:61)
+	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.consolidateFailures(DefaultConfiguration.java:1931)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailuresAndReportProblems(ResolutionHost.java:75)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:86)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:76)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:66)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:91)
+	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find io.flutter:armeabi_v7a_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+Searched in the following locations:
+  - https://dl.google.com/dl/android/maven2/io/flutter/armeabi_v7a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/armeabi_v7a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+  - https://repo.maven.apache.org/maven2/io/flutter/armeabi_v7a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/armeabi_v7a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+Required by:
+    project :app
+Cause 2: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapRepositoryOverrideFailure(ResolveExceptionMapper.java:108)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.lambda$mapFailures$0(ResolveExceptionMapper.java:60)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1939)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailures(ResolveExceptionMapper.java:61)
+	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.consolidateFailures(DefaultConfiguration.java:1931)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailuresAndReportProblems(ResolutionHost.java:75)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:86)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:76)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:66)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:91)
+	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find io.flutter:arm64_v8a_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+Searched in the following locations:
+  - https://dl.google.com/dl/android/maven2/io/flutter/arm64_v8a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/arm64_v8a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+  - https://repo.maven.apache.org/maven2/io/flutter/arm64_v8a_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/arm64_v8a_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+Required by:
+    project :app
+Cause 3: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapRepositoryOverrideFailure(ResolveExceptionMapper.java:108)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.lambda$mapFailures$0(ResolveExceptionMapper.java:60)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1939)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailures(ResolveExceptionMapper.java:61)
+	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.consolidateFailures(DefaultConfiguration.java:1931)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailuresAndReportProblems(ResolutionHost.java:75)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:86)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:76)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:66)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:91)
+	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find io.flutter:x86_64_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+Searched in the following locations:
+  - https://dl.google.com/dl/android/maven2/io/flutter/x86_64_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/x86_64_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+  - https://repo.maven.apache.org/maven2/io/flutter/x86_64_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/x86_64_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+Required by:
+    project :app
+Cause 4: org.gradle.api.internal.artifacts.ivyservice.TypedResolveException: Could not resolve all dependencies for configuration ':app:debugRuntimeClasspath'.
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapRepositoryOverrideFailure(ResolveExceptionMapper.java:108)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.lambda$mapFailures$0(ResolveExceptionMapper.java:60)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1939)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
+	at org.gradle.api.internal.artifacts.ResolveExceptionMapper.mapFailures(ResolveExceptionMapper.java:61)
+	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.consolidateFailures(DefaultConfiguration.java:1931)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionHost.rethrowFailuresAndReportProblems(ResolutionHost.java:75)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.maybeThrowResolutionFailures(ResolutionBackedFileCollection.java:86)
+	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:76)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:66)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:91)
+	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:112)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:361)
+	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find io.flutter:flutter_embedding_debug:1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.
+Searched in the following locations:
+  - https://dl.google.com/dl/android/maven2/io/flutter/flutter_embedding_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/flutter_embedding_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+  - https://repo.maven.apache.org/maven2/io/flutter/flutter_embedding_debug/1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf/flutter_embedding_debug-1.0.0-1527ae0ec577a4ef50e65f6fefcfc1326707d9bf.pom
+Required by:
+    project :app > project :audioplayers_android
+    project :app > project :camera_android_camerax
+    project :app > project :device_info_plus
+    project :app > project :flutter_plugin_android_lifecycle
+    project :app > project :flutter_tts
+    project :app > project :path_provider_android
+    project :app > project :permission_handler_android
+    project :app > project :shared_preferences_android
+    project :app > project :speech_to_text
+    project :app > project :vibration
+
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 7s
+17 actionable tasks: 1 executed, 16 up-to-date
+Watched directory hierarchies: [/Users/chaitanya/flutter/packages/flutter_tools/gradle, /Users/chaitanya/StudioProjects/signasphere/android]
