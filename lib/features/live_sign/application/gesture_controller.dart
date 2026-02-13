@@ -50,15 +50,34 @@ class GestureController extends StateNotifier<GestureState> {
 
   void initializeTracking(int viewId) {
     if (_subscription != null) return;
-    state = state.copyWith(status: "Active", isTracking: true);
+
+    print("🔥 initializeTracking called with viewId: $viewId");
+
+    state = state.copyWith(status: "Connecting...", isTracking: true);
 
     try {
       _subscription = _repository.getLandmarkStream(viewId).listen(
-        _processFrame,
-        onError: (err) => state = state.copyWith(status: "Error", errorMessage: err.toString()),
+            (data) {
+          print("✅ Frame received: ${data.length}");
+          _processFrame(data);
+        },
+        onError: (err) {
+          print("❌ Stream error: $err");
+          state = state.copyWith(
+            status: "Error",
+            errorMessage: err.toString(),
+          );
+        },
       );
+
+      print("🎥 Stream subscription created");
+
     } catch (e) {
-      state = state.copyWith(status: "Error", errorMessage: e.toString());
+      print("🚨 Exception in initializeTracking: $e");
+      state = state.copyWith(
+        status: "Error",
+        errorMessage: e.toString(),
+      );
     }
   }
 

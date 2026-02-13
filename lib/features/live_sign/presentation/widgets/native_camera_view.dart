@@ -7,11 +7,11 @@ import 'package:signasphere/features/live_sign/application/gesture_controller.da
 class NativeCameraView extends ConsumerWidget {
   const NativeCameraView({super.key});
 
-  static const String viewType = 'signasphere/native_view';
+  // 🔥 MUST MATCH MainActivity.kt
+  static const String viewType = 'sign_language_view';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Only render on Android
     if (defaultTargetPlatform != TargetPlatform.android) {
       return const Center(
         child: Text("This feature is only available on Android devices."),
@@ -24,7 +24,6 @@ class NativeCameraView extends ConsumerWidget {
       creationParams: const <String, dynamic>{},
       creationParamsCodec: const StandardMessageCodec(),
       onPlatformViewCreated: (int id) {
-        // Handshake: Tell the Riverpod controller the Native View ID
         ref.read(gestureControllerProvider.notifier).initializeTracking(id);
       },
     );

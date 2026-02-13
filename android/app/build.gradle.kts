@@ -29,6 +29,8 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
+
+            // Disable R8 / Proguard (MediaPipe fix)
             isMinifyEnabled = false
             isShrinkResources = false
         }
@@ -52,9 +54,8 @@ dependencies {
 
     implementation("com.google.mediapipe:tasks-vision:0.10.14")
 
-    // Fix for camera plugin compilation
+    // Camera plugin compilation fix
     implementation("androidx.concurrent:concurrent-futures:1.2.0")
 
-    // Kotlin Standard Library
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22")
 }

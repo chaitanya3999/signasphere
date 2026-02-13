@@ -31,6 +31,7 @@ class LearnScreen extends ConsumerWidget {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: const GlassAppBar(
         title: 'Learn Signs',
@@ -51,9 +52,9 @@ class LearnScreen extends ConsumerWidget {
               ),
             ),
           ),
-          
+
           ListView(
-            padding: const EdgeInsets.fromLTRB(20, 120, 20, 100),
+            padding: EdgeInsets.fromLTRB(20, 120, 20, MediaQuery.of(context).padding.bottom + 120,),
             children: [
               // ----------------------------------------------------
               // Section 1: Stats Panel
