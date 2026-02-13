@@ -184,4 +184,19 @@ extension type HTMLScriptElement._(JSObject _) implements JSObject, Element {
   external set async(bool value);
 }
 
-GeminiServiceBase createGeminiService() => GeminiServiceWeb();
+// Conditional imports handled at top of file usually. 
+// Since gemini_service_mobile.dart was the default for io, we need to switch logic.
+// In `gemini_service.dart`, we have:
+// import 'gemini/gemini_service_stub.dart'
+//     if (dart.library.io) 'gemini/gemini_service_mobile.dart'
+//     if (dart.library.js_interop) 'gemini/gemini_service_web.dart';
+
+// We need to change `gemini_service_mobile.dart` to actually use the bridge OR 
+// change the conditional import to point to a new file that decides.
+// HOWEVER, `gemini_service_web_bridge.dart` depends on `webview_flutter` which is IO only.
+// So we can make `gemini_service_mobile.dart` use the bridge? 
+// No, let's keep it clean.
+// The user wants to replace REST with Web Bridge for Android.
+
+// Let's modify `lib/core/services/gemini_service.dart` imports.
+

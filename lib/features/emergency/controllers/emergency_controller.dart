@@ -36,25 +36,26 @@ class EmergencyController extends StateNotifier<bool> {
 
   Future<void> sendSMS(String message) async {
     final contacts = await _contactsService.loadContacts();
-    if (contacts.isEmpty) {
-      // Logic for no contacts can be handled in UI by checking this before calling
-      return; 
-    }
+    if (contacts.isEmpty) return;
     
-    // Send to first contact for now, or loop? The requirement implies singular action.
-    // "Send SMS + Location to parent contacts"
-    // We'll pick the first one as primary.
     final contact = contacts.first;
     
-    final position = await getCurrentLocation();
     String locationText = "";
-    if (position != null) {
-      locationText = "\nLocation: https://maps.google.com/?q=${position.latitude},${position.longitude}";
+    try {
+      final position = await getCurrentLocation();
+      if (position != null) {
+        locationText = "\nLocation: https://maps.google.com/?q=${position.latitude},${position.longitude}";
+      }
+    } catch (_) {
+      // Ignore location errors and send message anyway
     }
 
     final fullMessage = "🚨 EMERGENCY ALERT from Signasphere 🚨\nMessage: $message$locationText";
     
-    final uri = Uri(
+    // Use the `sms:` scheme. 
+    // Note: On Android, the query parameter for body is 'body'. on iOS it might be '&body=' but url_launcher handles some of this.
+    // Ideally we use a consistent URI.
+    final Uri uri = Uri(
       scheme: 'sms',
       path: contact.phone,
       queryParameters: <String, String>{
@@ -64,6 +65,9 @@ class EmergencyController extends StateNotifier<bool> {
 
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
+    } else {
+      // Fallback or error handling
+      print("Could not launch SMS url");
     }
   }
 
@@ -72,19 +76,39 @@ class EmergencyController extends StateNotifier<bool> {
     if (contacts.isEmpty) return;
 
     final contact = contacts.first;
-    final position = await getCurrentLocation();
+    
     String locationText = "";
-    if (position != null) {
-      locationText = "\nLocation: https://maps.google.com/?q=${position.latitude},${position.longitude}";
+    try {
+      final position = await getCurrentLocation();
+      if (position != null) {
+        locationText = "\nLocation: https://maps.google.com/?q=${position.latitude},${position.longitude}";
+      }
+    } catch (_) {
+      // Ignore location errors
     }
     
-    final fullMessage = Uri.encodeComponent("🚨 EMERGENCY ALERT from Signasphere 🚨\nMessage: $message$locationText");
-    // Ensure number is international format for WA. Assuming user stored it correctly or we prepend cleaner.
-    // Just using what's stored.
-    final uri = Uri.parse("https://wa.me/${contact.phone}?text=$fullMessage");
+    final fullMessage = "🚨 EMERGENCY ALERT from Signasphere 🚨\nMessage: $message$locationText";
+    
+    // Clean phone number (remove +, spaces, dashes for wa.me link if needed, but whatsapp:// usually handles it)
+    String phone = contact.phone.replaceAll(RegExp(r'[^\d]'), '');
+    
+    // 1. Try Native WhatsApp scheme first (Android/iOS app)
+    final nativeUri = Uri.parse("whatsapp://send?phone=$phone&text=${Uri.encodeComponent(fullMessage)}");
+    
+    // 2. Fallback Web/Universal Link (Works on Web & Android if app not found/intercepted)
+    final webUri = Uri.parse("https://wa.me/$phone?text=${Uri.encodeComponent(fullMessage)}");
 
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    try {
+      if (await canLaunchUrl(nativeUri)) {
+        await launchUrl(nativeUri);
+      } else {
+        // Fallback to web link
+        if (await canLaunchUrl(webUri)) {
+           await launchUrl(webUri, mode: LaunchMode.externalApplication);
+        }
+      }
+    } catch (e) {
+      print("Error launching WhatsApp: $e");
     }
   }
 

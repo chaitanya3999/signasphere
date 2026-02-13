@@ -6,6 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 // Import core configurations
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
+// Initial widget route handling
+// Import core configurations checked above
 import 'core/theme/theme_controller.dart';
 
 /// Global variable to store the initial widget deep-link route

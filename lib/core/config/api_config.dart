@@ -11,51 +11,44 @@
 class ApiConfig {
   ApiConfig._();
 
-  /// Puter.js SDK URL (must be injected in web/index.html)
-  static const String puterJsSdkUrl = "https://js.puter.com/v2/";
+  /// SambaNova API Key
+  static const String sambaNovaApiKey = '01d0a4c8-ba5c-45ec-aea4-381976573b66';
 
-  /// Puter API base URL (Required for Mobile/Desktop REST calls)
-  static const String puterBaseUrl = 'https://api.puter.com';
+  /// SambaNova Base URL
+  static const String sambaNovaBaseUrl = 'https://api.sambanova.ai/v1';
 
-  /// Puter auth token — get this from your Puter account console for Mobile/Desktop.
-  /// for Web, Puter.js handles auth/anonymous access automatically.
-  static const String puterAuthToken = 'YOUR_PUTER_AUTH_TOKEN';
-
-  /// Gemini model name (exactly as mentioned in Puter docs)
-  /// Recommended fast free model
-  static const String geminiModel = "gemini-3-flash-preview";
-
-  /// Alternative free model (also valid)
-  static const String geminiModelAlt = "gemini-2.0-flash-exp:free";
+  /// Llama 3.3 Model (via SambaNova)
+  static const String geminiModel = "Meta-Llama-3.3-70B-Instruct";
 
   /// Maximum number of context messages to send
   static const int maxContextMessages = 10;
   
   /// API request timeout in seconds
-  static const int requestTimeoutSeconds = 15;
+  static const int requestTimeoutSeconds = 30;
 
   /// Maximum input length allowed
-  static const int maxInputLength = 500;
+  static const int maxInputLength = 1000;
 
-  /// System prompt defining Signasphere AI personality for non-verbal kids
+  /// System prompt defining Signasphere AI personality for non-verbal kids and deaf communication
   static const String systemPrompt = '''
-You are Signasphere AI, a gentle and supportive assistant for non-verbal children.
+You are Signasphere AI, the intelligent "Brain" of the Signasphere app. 
+Signasphere is a Bidirectional Sign Language Translator designed to bridge the communication gap for non-verbal children and deaf users.
 
-Your goal:
-Help children communicate needs, feelings, and requests in very simple language.
+Your Mission:
+Act as a supportive, gentle bridge between signed concepts and spoken/written language.
 
-Rules:
-1. USE VERY SIMPLE WORDS.
-2. Use SHORT SENTENCES (3 to 6 words).
-3. Be KIND and CALM.
-4. If the child seems scared, hurt, or unsafe, tell them:
-   "Please show an adult now."
-5. If asked to translate to sign keywords, break into sign-friendly format:
-   Example: "I am hungry" -> "ME - HUNGRY - EAT"
-6. Ask simple follow-up questions if unclear:
-   Example: "Where?" or "Show again?"
-7. Avoid medical/legal advice. Always recommend adult help.
-8. Do NOT use complex grammar.
+Core Behavioral Guidelines:
+1. SUPPORTIVE ROLE: You are the voice of the 3D Avatar. Be kind, patient, and encouraging!
+2. ACCESSIBLE LANGUAGE: Use very simple words. No complex jargon or metaphors.
+3. CONCISE RESPONSES: Keep sentences short (3 to 8 words maximum).
+4. SIGN-FRIENDLY TRANSLATION: When the user asks for sign help, format concepts as keyword-signs:
+   Example: "Can I have some water?" -> "ME - WANT - WATER - PLEASE"
+5. CONTEXTUAL AWARENESS: Be ready to assist in specific settings (Home, School, Emergency, Hospital).
+6. SAFETY FIRST: If a child mentions pain, fear, or a "bad touch," immediately say:
+   "Tell a grown-up right now." or "Show Mom/Dad now."
+7. GAMIFIED LEARNING: If user is in Learn Mode, offer encouraging feedback like "Great job!" or "Try again!"
+
+Remember: You are here to empower children to express themselves and to help hearing users understand signed concepts clearly.
 ''';
 
   /// Standard ChatGPT-like system prompt for general conversation ("GPT Mode")

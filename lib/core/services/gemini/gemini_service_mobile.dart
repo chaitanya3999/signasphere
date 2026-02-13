@@ -4,7 +4,7 @@ import '../../config/api_config.dart';
 import '../../../features/conversation/data/conversation_repository.dart';
 import 'gemini_service_base.dart';
 
-/// Mobile implementation using REST API
+/// Mobile implementation using SambaNova REST API
 class GeminiServiceMobile implements GeminiServiceBase {
   final http.Client _client = http.Client();
 
@@ -21,23 +21,23 @@ class GeminiServiceMobile implements GeminiServiceBase {
 
     final messages = _buildMessages(sanitized, history, systemPrompt);
 
+    // SambaNova / OpenAI Compatible Body
     final body = jsonEncode({
-      'interface': 'puter-chat-completion',
-      'driver': 'ai-chat',
-      'method': 'complete',
-      'args': {
-        'messages': messages,
-        'model': ApiConfig.geminiModel,
-      },
+      'stream': false,
+      'model': ApiConfig.geminiModel,
+      'messages': messages,
+      // Optional: Add temperature, max_tokens if needed, but defaults are usually fine
+      // 'temperature': 0.7,
+      // 'max_tokens': 1000, 
     });
 
     try {
       final response = await _client
           .post(
-            Uri.parse('${ApiConfig.puterBaseUrl}/drivers/call'),
+            Uri.parse('${ApiConfig.sambaNovaBaseUrl}/chat/completions'),
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer ${ApiConfig.puterAuthToken}',
+              'Authorization': 'Bearer ${ApiConfig.sambaNovaApiKey}',
             },
             body: body,
           )
@@ -46,12 +46,30 @@ class GeminiServiceMobile implements GeminiServiceBase {
           );
 
       if (response.statusCode == 200) {
-        return _parseResponse(response.body);
+        return _parseResponse(response.bodyBytes);
       } else if (response.statusCode == 429) {
         throw GeminiServiceException(
           'Too many requests. Please wait a moment and try again.',
         );
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
+         throw GeminiServiceException(
+          'Authentication failed (${response.statusCode}). Check API Key.',
+        );
       } else {
+        // Try to parse error message from body
+        try {
+           final errJson = jsonDecode(response.body);
+           String msg = "API Error";
+           if (errJson['error'] != null) {
+              if (errJson['error'] is String) {
+                  msg = errJson['error'];
+              } else if (errJson['error']['message'] != null) {
+                  msg = errJson['error']['message'];
+              }
+           }
+           throw GeminiServiceException(msg);
+        } catch (_) {}
+
         throw GeminiServiceException(
           'API error (${response.statusCode}). Please try again.',
         );
@@ -92,7 +110,6 @@ class GeminiServiceMobile implements GeminiServiceBase {
 
     messages.add({
       'role': 'system',
-      'role': 'system',
       'content': systemPrompt ?? ApiConfig.systemPrompt,
     });
 
@@ -103,11 +120,12 @@ class GeminiServiceMobile implements GeminiServiceBase {
         : 0;
 
     for (int i = startIndex; i < relevantHistory.length; i++) {
-      final msg = relevantHistory[i];
-      messages.add({
-        'role': msg.isMe ? 'user' : 'assistant',
-        'content': msg.text,
-      });
+        final msg = relevantHistory[i];
+        final role = msg.isMe ? 'user' : 'assistant'; // OpenAI/Llama uses 'assistant'
+        messages.add({
+          'role': role,
+          'content': msg.text,
+        });
     }
 
     messages.add({
@@ -118,29 +136,19 @@ class GeminiServiceMobile implements GeminiServiceBase {
     return messages;
   }
 
-  String _parseResponse(String responseBody) {
+  String _parseResponse(dynamic responseBodyBytes) {
     try {
-      final json = jsonDecode(responseBody);
+      final jsonString = utf8.decode(responseBodyBytes);
+      final json = jsonDecode(jsonString);
 
-      if (json is Map) {
-        if (json['result'] != null) {
-          final result = json['result'];
-          if (result is Map && result['message'] != null) {
-            final content = result['message']['content'];
-            if (content is String && content.isNotEmpty) return content.trim();
-          }
-          if (result is String && result.isNotEmpty) return result.trim();
-        }
-        
-        if (json['message'] != null) {
-          final msg = json['message'];
-          if (msg is Map && msg['content'] is String) {
-            return (msg['content'] as String).trim();
-          }
+      if (json['choices'] != null && (json['choices'] as List).isNotEmpty) {
+        final choice = json['choices'][0];
+        if (choice['message'] != null && choice['message']['content'] != null) {
+          return (choice['message']['content'] as String).trim();
         }
       }
       
-      throw GeminiServiceException('Unexpected response format.');
+      throw GeminiServiceException('Empty response from SambaNova.');
     } catch (e) {
       if (e is GeminiServiceException) rethrow;
       throw GeminiServiceException('Failed to parse AI response.');
