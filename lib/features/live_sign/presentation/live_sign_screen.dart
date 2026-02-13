@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:signasphere/features/live_sign/application/gesture_controller.dart';
 import 'package:signasphere/features/live_sign/presentation/widgets/native_camera_view.dart';
+import '../../user_tracking/controllers/usage_controller.dart';
+import '../../user_tracking/models/usage_event.dart';
 
 class LiveSignScreen extends ConsumerWidget {
   const LiveSignScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.read(usageControllerProvider).trackEvent(UsageEventType.usedLiveSign);
     final gestureState = ref.watch(gestureControllerProvider);
 
     // 🔥 Word Recognition Freshness Check (1.5s animation window)

@@ -1,0 +1,28 @@
+Running Gradle task 'assembleRelease'...                        
+Font asset "Phosphor-Bold.ttf" was tree-shaken, reducing it from 495308 to 13776 bytes (97.2% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "Phosphor-Duotone.ttf" was tree-shaken, reducing it from 567808 to 18088 bytes (96.8% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "Phosphor-Fill.ttf" was tree-shaken, reducing it from 449252 to 11068 bytes (97.5% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "Phosphor-Light.ttf" was tree-shaken, reducing it from 536628 to 14824 bytes (97.2% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "Phosphor.ttf" was tree-shaken, reducing it from 488636 to 14056 bytes (97.1% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "CupertinoIcons.ttf" was tree-shaken, reducing it from 257628 to 848 bytes (99.7% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "Phosphor-Thin.ttf" was tree-shaken, reducing it from 535152 to 14840 bytes (97.2% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 4876 bytes (99.7% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:processReleaseResources'.
+> A failure occurred while executing com.android.build.gradle.internal.res.LinkApplicationAndroidResourcesTask$TaskAction
+   > Android resource linking failed
+     ERROR: /Users/chaitanya/StudioProjects/signasphere/build/app/intermediates/packaged_manifests/release/processReleaseManifestForPackage/AndroidManifest.xml:52: AAPT: error: resource mipmap/ic_launcher_round (aka com.example.signasphere:mipmap/ic_launcher_round) not found.
+
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 21s
+Running Gradle task 'assembleRelease'...                           21.4s
+Gradle task assembleRelease failed with exit code 1

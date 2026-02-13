@@ -7,6 +7,8 @@ import '../../../../core/widgets/glass_app_bar.dart';
 import '../domain/quiz_models.dart';
 import 'learn_controller.dart';
 import 'quiz_session_screen.dart';
+import '../../user_tracking/controllers/usage_controller.dart';
+import '../../user_tracking/models/usage_event.dart';
 
 class LearnScreen extends ConsumerWidget {
   const LearnScreen({super.key});
@@ -21,6 +23,7 @@ class LearnScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.read(usageControllerProvider).trackEvent(UsageEventType.usedLearn);
     final state = ref.watch(learnControllerProvider);
 
     if (state.isLoading) {

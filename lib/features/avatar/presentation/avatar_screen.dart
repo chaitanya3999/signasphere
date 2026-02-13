@@ -6,6 +6,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/widgets/glass_container.dart';
+import '../../user_tracking/controllers/usage_controller.dart';
+import '../../user_tracking/models/usage_event.dart';
 
 class AvatarScreen extends ConsumerStatefulWidget {
   const AvatarScreen({super.key});
@@ -83,6 +85,7 @@ class _AvatarScreenState extends ConsumerState<AvatarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.read(usageControllerProvider).trackEvent(UsageEventType.usedAvatar);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
