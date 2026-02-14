@@ -161,10 +161,32 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     ref.read(usageControllerProvider).trackEvent(UsageEventType.usedConversation);
     final messages = ref.watch(conversationControllerProvider);
 
-    // Auto-scroll on new messages
+    // Auto-scroll on new messages & handle rate limit feedback
     ref.listen(conversationControllerProvider, (prev, next) {
       if (next.length > (prev?.length ?? 0)) {
         Future.delayed(const Duration(milliseconds: 100), _scrollToBottom);
+        
+        // Show rate limit snackbars from error message
+        final lastMsg = next.last;
+        if (lastMsg.status == 'error') {
+          if (lastMsg.text.contains("AI is busy")) {
+             ScaffoldMessenger.of(context).showSnackBar(
+               SnackBar(
+                 content: const Text("AI is busy. Trying again..."),
+                 backgroundColor: Colors.orangeAccent.withOpacity(0.8),
+                 behavior: SnackBarBehavior.floating,
+               )
+             );
+          } else if (lastMsg.text.contains("overloaded")) {
+             ScaffoldMessenger.of(context).showSnackBar(
+               SnackBar(
+                 content: const Text("AI is overloaded. Please try again in 1 minute."),
+                 backgroundColor: Colors.redAccent.withOpacity(0.8),
+                 behavior: SnackBarBehavior.floating,
+               )
+             );
+          }
+        }
       }
     });
 

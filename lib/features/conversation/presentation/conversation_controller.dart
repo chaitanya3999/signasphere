@@ -16,6 +16,7 @@ class ConversationController extends StateNotifier<List<ChatMessage>> {
   final GeminiService _gemini;
   final Ref _ref;
   bool _isProcessing = false;
+  DateTime? _lastMessageTime;
 
   ConversationController(this._repository, this._gemini, this._ref) : super([]) {
     _loadMessages();
@@ -27,6 +28,16 @@ class ConversationController extends StateNotifier<List<ChatMessage>> {
 
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty || _isProcessing) return;
+
+    // Cooldown check (2 seconds)
+    if (_lastMessageTime != null) {
+      final difference = DateTime.now().difference(_lastMessageTime!);
+      if (difference.inSeconds < 2) {
+         // Optionally notify user or just block
+         return;
+      }
+    }
+    _lastMessageTime = DateTime.now();
 
     _isProcessing = true;
 

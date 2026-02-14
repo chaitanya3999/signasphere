@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:async';
+import 'dart:math';
 import 'package:http/http.dart' as http;
 import '../../config/api_config.dart';
 import '../../../features/conversation/data/conversation_repository.dart';
@@ -7,12 +9,46 @@ import 'gemini_service_base.dart';
 /// Mobile implementation using SambaNova REST API
 class GeminiServiceMobile implements GeminiServiceBase {
   final http.Client _client = http.Client();
+  bool _useBackupToken = false;
+  bool _isRequestActive = false;
+  final List<Completer<void>> _lockQueue = [];
 
   @override
   Future<String> generateResponse({
     required String userMessage,
     required List<ChatMessage> history,
     String? systemPrompt,
+  }) async {
+    // Sequential Execution Lock
+    if (_isRequestActive) {
+      final completer = Completer<void>();
+      _lockQueue.add(completer);
+      await completer.future;
+    }
+
+    _isRequestActive = true;
+    try {
+      return await _executeWithRetry(
+        userMessage: userMessage,
+        history: history,
+        systemPrompt: systemPrompt,
+      );
+    } finally {
+      // Release lock and trigger next in queue
+      if (_lockQueue.isNotEmpty) {
+        final next = _lockQueue.removeAt(0);
+        next.complete();
+      } else {
+        _isRequestActive = false;
+      }
+    }
+  }
+
+  Future<String> _executeWithRetry({
+    required String userMessage,
+    required List<ChatMessage> history,
+    String? systemPrompt,
+    int retryCount = 0,
   }) async {
     final sanitized = _sanitizeInput(userMessage);
     if (sanitized.isEmpty) {
@@ -26,10 +62,10 @@ class GeminiServiceMobile implements GeminiServiceBase {
       'stream': false,
       'model': ApiConfig.geminiModel,
       'messages': messages,
-      // Optional: Add temperature, max_tokens if needed, but defaults are usually fine
-      // 'temperature': 0.7,
-      // 'max_tokens': 1000, 
     });
+
+    final currentToken = _useBackupToken ? ApiConfig.backupAuthToken : ApiConfig.primaryAuthToken;
+    print('[GeminiService] Using ${_useBackupToken ? "Backup" : "Primary"} Token (Retry: $retryCount)');
 
     try {
       final response = await _client
@@ -37,7 +73,7 @@ class GeminiServiceMobile implements GeminiServiceBase {
             Uri.parse('${ApiConfig.sambaNovaBaseUrl}/chat/completions'),
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer ${ApiConfig.sambaNovaApiKey}',
+              'Authorization': 'Bearer $currentToken',
             },
             body: body,
           )
@@ -45,14 +81,39 @@ class GeminiServiceMobile implements GeminiServiceBase {
             const Duration(seconds: ApiConfig.requestTimeoutSeconds),
           );
 
+      print('[GeminiService] Response Status: ${response.statusCode}');
+
       if (response.statusCode == 200) {
         return _parseResponse(response.bodyBytes);
       } else if (response.statusCode == 429) {
-        throw GeminiServiceException(
-          'Too many requests. Please wait a moment and try again.',
-        );
+        if (retryCount == 0) {
+          // Fallback to backup token immediately on first 429
+          print('[GeminiService] Rate limited. Switching to backup token.');
+          _useBackupToken = !_useBackupToken; // Toggle token
+          return _executeWithRetry(
+            userMessage: userMessage,
+            history: history,
+            systemPrompt: systemPrompt,
+            retryCount: retryCount + 1,
+          );
+        } else if (retryCount < 3) {
+          // Exponential backoff: 2s, 4s, 8s
+          final backoffSeconds = pow(2, retryCount).toInt();
+          print('[GeminiService] Rate limited on backup. Waiting ${backoffSeconds}s before retry $retryCount...');
+          await Future.delayed(Duration(seconds: backoffSeconds));
+          return _executeWithRetry(
+            userMessage: userMessage,
+            history: history,
+            systemPrompt: systemPrompt,
+            retryCount: retryCount + 1,
+          );
+        } else {
+          throw GeminiServiceException(
+            'AI is overloaded. Please try again in 1 minute.',
+          );
+        }
       } else if (response.statusCode == 401 || response.statusCode == 403) {
-         throw GeminiServiceException(
+        throw GeminiServiceException(
           'Authentication failed (${response.statusCode}). Check API Key.',
         );
       } else {

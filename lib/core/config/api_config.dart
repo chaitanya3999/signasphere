@@ -11,10 +11,11 @@
 class ApiConfig {
   ApiConfig._();
 
-  /// SambaNova API Key
-  static const String sambaNovaApiKey = '01d0a4c8-ba5c-45ec-aea4-381976573b66';
+  /// SambaNova API Keys (Multi-token support)
+  static const String primaryAuthToken = '01d0a4c8-ba5c-45ec-aea4-381976573b66';
+  static const String backupAuthToken = '75a61bd8-c94a-4239-bf03-9605bb65033b';
 
-  /// SambaNova Base URL
+  /// Llama 3.3 Model (via SambaNova)
   static const String sambaNovaBaseUrl = 'https://api.sambanova.ai/v1';
 
   /// Llama 3.3 Model (via SambaNova)
