@@ -12,14 +12,15 @@ class ApiConfig {
   ApiConfig._();
 
   /// SambaNova API Keys (Multi-token support)
-  static const String primaryAuthToken = '01d0a4c8-ba5c-45ec-aea4-381976573b66';
-  static const String backupAuthToken = '75a61bd8-c94a-4239-bf03-9605bb65033b';
+  static const String primaryAuthToken = '75a61bd8-c94a-4239-bf03-9605bb65033b';
+  static const String backupAuthToken = '01d0a4c8-ba5c-45ec-aea4-381976573b66';
+ 
 
   /// Llama 3.3 Model (via SambaNova)
   static const String sambaNovaBaseUrl = 'https://api.sambanova.ai/v1';
 
   /// Llama 3.3 Model (via SambaNova)
-  static const String geminiModel = "Meta-Llama-3.3-70B-Instruct";
+  static const String geminiModel = "gpt-oss-120b";
 
   /// Maximum number of context messages to send
   static const int maxContextMessages = 10;
