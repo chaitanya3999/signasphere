@@ -14,7 +14,6 @@ class ApiConfig {
   /// SambaNova API Keys (Multi-token support)
   static const String primaryAuthToken = '75a61bd8-c94a-4239-bf03-9605bb65033b';
   static const String backupAuthToken = '01d0a4c8-ba5c-45ec-aea4-381976573b66';
- 
 
   /// Llama 3.3 Model (via SambaNova)
   static const String sambaNovaBaseUrl = 'https://api.sambanova.ai/v1';
@@ -22,9 +21,12 @@ class ApiConfig {
   /// Llama 3.3 Model (via SambaNova)
   static const String geminiModel = "gpt-oss-120b";
 
+  /// Puter.js SDK URL for web implementation
+  static const String puterJsSdkUrl = 'https://js.puter.com/v2/';
+
   /// Maximum number of context messages to send
   static const int maxContextMessages = 10;
-  
+
   /// API request timeout in seconds
   static const int requestTimeoutSeconds = 30;
 

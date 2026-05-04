@@ -36,7 +36,11 @@ class FrequencyEntry {
 
 class FrequencyHeap {
   final List<FrequencyEntry> _heap = [];
-  final Map<String, int> _indexMap = {}; // word → heap index for O(log n) updates
+  final Map<String, int> _indexMap =
+      {}; // word → heap index for O(log n) updates
+
+  // Constructor
+  FrequencyHeap();
 
   // ─── Public API ───────────────────────────────────────────────
 
@@ -76,13 +80,15 @@ class FrequencyHeap {
     final idx = _indexMap[word];
     if (idx == null) {
       // First time using this sign — add it
-      push(FrequencyEntry(
-        word: word,
-        frequency: 1,
-        category: 'unknown',
-        gifAssetPath: '',
-        avatarAnimKey: '',
-      ));
+      push(
+        FrequencyEntry(
+          word: word,
+          frequency: 1,
+          category: 'unknown',
+          gifAssetPath: '',
+          avatarAnimKey: '',
+        ),
+      );
       return;
     }
     _heap[idx].frequency++;
@@ -95,13 +101,15 @@ class FrequencyHeap {
     // Clone to avoid mutating original
     final cloneHeap = FrequencyHeap();
     for (final entry in _heap) {
-      cloneHeap.push(FrequencyEntry(
-        word: entry.word,
-        frequency: entry.frequency,
-        category: entry.category,
-        gifAssetPath: entry.gifAssetPath,
-        avatarAnimKey: entry.avatarAnimKey,
-      ));
+      cloneHeap.push(
+        FrequencyEntry(
+          word: entry.word,
+          frequency: entry.frequency,
+          category: entry.category,
+          gifAssetPath: entry.gifAssetPath,
+          avatarAnimKey: entry.avatarAnimKey,
+        ),
+      );
     }
     final result = <FrequencyEntry>[];
     for (int i = 0; i < n && cloneHeap._heap.isNotEmpty; i++) {
@@ -114,9 +122,7 @@ class FrequencyHeap {
   /// Get top signs filtered by category
   /// Used for the Hospital/Emergency special mode in your roadmap
   List<FrequencyEntry> getTopByCategory(String category, {int limit = 6}) {
-    final filtered = _heap
-        .where((e) => e.category == category)
-        .toList()
+    final filtered = _heap.where((e) => e.category == category).toList()
       ..sort((a, b) => b.frequency.compareTo(a.frequency));
     return filtered.take(limit).toList();
   }
@@ -125,25 +131,31 @@ class FrequencyHeap {
   int get size => _heap.length;
 
   /// Serialize for persistence (SharedPreferences / local DB)
-  List<Map<String, dynamic>> toJson() => _heap.map((e) => {
-    'word': e.word,
-    'frequency': e.frequency,
-    'category': e.category,
-    'gifAssetPath': e.gifAssetPath,
-    'avatarAnimKey': e.avatarAnimKey,
-  }).toList();
+  List<Map<String, dynamic>> toJson() => _heap
+      .map(
+        (e) => {
+          'word': e.word,
+          'frequency': e.frequency,
+          'category': e.category,
+          'gifAssetPath': e.gifAssetPath,
+          'avatarAnimKey': e.avatarAnimKey,
+        },
+      )
+      .toList();
 
   /// Restore from saved JSON on app startup
   factory FrequencyHeap.fromJson(List<Map<String, dynamic>> data) {
     final heap = FrequencyHeap();
     for (final item in data) {
-      heap.push(FrequencyEntry(
-        word: item['word'],
-        frequency: item['frequency'],
-        category: item['category'],
-        gifAssetPath: item['gifAssetPath'],
-        avatarAnimKey: item['avatarAnimKey'],
-      ));
+      heap.push(
+        FrequencyEntry(
+          word: item['word'],
+          frequency: item['frequency'],
+          category: item['category'],
+          gifAssetPath: item['gifAssetPath'],
+          avatarAnimKey: item['avatarAnimKey'],
+        ),
+      );
     }
     return heap;
   }
@@ -163,11 +175,13 @@ class FrequencyHeap {
     final n = _heap.length;
     while (true) {
       int largest = idx;
-      final left  = 2 * idx + 1;
+      final left = 2 * idx + 1;
       final right = 2 * idx + 2;
 
-      if (left  < n && _heap[left].frequency  > _heap[largest].frequency) largest = left;
-      if (right < n && _heap[right].frequency > _heap[largest].frequency) largest = right;
+      if (left < n && _heap[left].frequency > _heap[largest].frequency)
+        largest = left;
+      if (right < n && _heap[right].frequency > _heap[largest].frequency)
+        largest = right;
 
       if (largest == idx) break;
       _swap(idx, largest);

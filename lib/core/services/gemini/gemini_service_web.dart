@@ -22,19 +22,21 @@ class GeminiServiceWeb implements GeminiServiceBase {
 
     try {
       final chatOptions = ChatOptions(model: ApiConfig.geminiModel);
-      
+
       // Wait for Puter.js to load (handle race conditions)
       final puterInstance = await _waitForPuter();
-      
+
       if (puterInstance == null) {
-        throw GeminiServiceException("Puter.js not loaded. Please Reload Page.");
+        throw GeminiServiceException(
+          "Puter.js not loaded. Please Reload Page.",
+        );
       }
-      
+
       final ai = puterInstance.ai;
       if (ai == null) {
-         throw GeminiServiceException("Puter.ai service not initialized.");
+        throw GeminiServiceException("Puter.ai service not initialized.");
       }
-      
+
       final promise = ai.chat(prompt.toJS, chatOptions);
 
       // Convert JSPromise to Dart Future safely
@@ -42,22 +44,25 @@ class GeminiServiceWeb implements GeminiServiceBase {
 
       if (result.isA<JSString>()) {
         final str = (result as JSString).toDart;
-        if (str.trim().isEmpty) throw GeminiServiceException("Empty AI response.");
+        if (str.trim().isEmpty)
+          throw GeminiServiceException("Empty AI response.");
         return str.trim();
       } else {
-         // It might be an object, let's just toString it safely
-         final str = result.toString();
-         if (str.trim().isEmpty) throw GeminiServiceException("Empty AI response.");
-         return str.trim();
+        // It might be an object, let's just toString it safely
+        final str = result.toString();
+        if (str.trim().isEmpty)
+          throw GeminiServiceException("Empty AI response.");
+        return str.trim();
       }
     } catch (e) {
       // Expose the actual error for debugging
       final errorMessage = e.toString();
-      
-      if (errorMessage.contains("ReferenceError") || errorMessage.contains("puter is not defined")) {
-         throw GeminiServiceException("Puter.js script missing. Restart App.");
+
+      if (errorMessage.contains("ReferenceError") ||
+          errorMessage.contains("puter is not defined")) {
+        throw GeminiServiceException("Puter.js script missing. Restart App.");
       }
-      
+
       throw GeminiServiceException("AI Error: $errorMessage");
     }
   }
@@ -67,7 +72,7 @@ class GeminiServiceWeb implements GeminiServiceBase {
   Future<PuterJS?> _waitForPuter() async {
     // Check immediately
     if (puter != null) return puter;
-    
+
     // Attempt dynamic injection if not found immediately
     _injectPuterScript();
 
@@ -76,21 +81,23 @@ class GeminiServiceWeb implements GeminiServiceBase {
       await Future.delayed(const Duration(milliseconds: 100));
       if (puter != null) return puter;
     }
-    
+
     return null;
   }
-  
+
   /// Dynamically injects the Puter.js script into the document head
   void _injectPuterScript() {
     // Check if script already exists to avoid duplicates
-    final existingScript = document.querySelector('script[src="${ApiConfig.puterJsSdkUrl}"]');
+    final existingScript = document.querySelector(
+      'script[src="${ApiConfig.puterJsSdkUrl}"]',
+    );
     if (existingScript != null) return;
 
     final script = document.createElement('script') as HTMLScriptElement;
     script.src = ApiConfig.puterJsSdkUrl;
     script.type = 'text/javascript';
     script.async = true;
-    
+
     document.head?.appendChild(script);
   }
 
@@ -105,7 +112,11 @@ class GeminiServiceWeb implements GeminiServiceBase {
     return sanitized;
   }
 
-  String _buildPrompt(String currentMessage, List<ChatMessage> history, String? systemPrompt) {
+  String _buildPrompt(
+    String currentMessage,
+    List<ChatMessage> history,
+    String? systemPrompt,
+  ) {
     final buffer = StringBuffer();
     buffer.writeln("SYSTEM:");
     buffer.writeln((systemPrompt ?? ApiConfig.systemPrompt).trim());
@@ -174,7 +185,7 @@ extension type Element._(JSObject _) implements JSObject {
 
 @JS()
 extension type HTMLHeadElement._(JSObject _) implements JSObject, Element {
-   // Inherits appendChild
+  // Inherits appendChild
 }
 
 @JS()
@@ -183,6 +194,8 @@ extension type HTMLScriptElement._(JSObject _) implements JSObject, Element {
   external set type(String value);
   external set async(bool value);
 }
+
+GeminiServiceBase createGeminiService() => GeminiServiceWeb();
 
 // Conditional imports handled at top of file usually. 
 // Since gemini_service_mobile.dart was the default for io, we need to switch logic.
