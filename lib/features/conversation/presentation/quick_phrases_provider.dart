@@ -17,15 +17,21 @@ class QuickPhrasesController extends StateNotifier<List<String>> {
     state = _repository.getPhrases();
   }
 
+  /// Record phrase usage and refresh order (Priority Queue reorder).
+  Future<void> usePhrase(String phrase) async {
+    await _repository.recordUsage(phrase);
+    // Refresh state with new ranking
+    state = _repository.getPhrases();
+  }
+
   Future<void> addPhrase(String phrase) async {
     if (phrase.trim().isEmpty) return;
     if (state.contains(phrase)) return;
-    if (state.length >= 12) return; // Max 12 limit
-    if (phrase.length > 30) return; // Max 30 chars
+    if (state.length >= 12) return;
+    if (phrase.length > 30) return;
 
-    final newState = [...state, phrase];
-    state = newState;
-    await _repository.savePhrases(newState);
+    await _repository.addPhrase(phrase);
+    state = _repository.getPhrases();
   }
 
   Future<void> removePhrase(String phrase) async {

@@ -150,7 +150,11 @@ class VideoSignController extends StateNotifier<VideoSignState> {
 
       final wordSign = wordSigns[w];
 
-      // ── Step 1: Highlight current word ──
+      // ── Start Pipeline for this Word ──
+      
+      final spokenWord = wordSign.word.toLowerCase();
+
+      // 1. SIGN PHASE (Visual First)
       state = state.copyWith(
         currentWordIndex: w,
         currentLabel: wordSign.hasDirectSign
@@ -159,8 +163,8 @@ class VideoSignController extends StateNotifier<VideoSignState> {
         phase: PlayPhase.signing,
       );
 
-      // ── Step 2: Play all videos for this word ──
       if (wordSign.videoPaths.isNotEmpty) {
+        // This plays the single word video if known, or all letter videos if unknown
         for (final videoPath in wordSign.videoPaths) {
           if (_stopRequested) break;
           await _waitWhilePaused();
@@ -168,11 +172,10 @@ class VideoSignController extends StateNotifier<VideoSignState> {
 
           globalVideoIndex++;
           state = state.copyWith(queueIndex: globalVideoIndex);
-
           await _playVideoAsset(videoPath);
         }
       } else {
-        // No sign available — show fallback
+        // No sign available fallback
         state = state.copyWith(
           currentLabel: "No sign available for: ${wordSign.word}",
         );
@@ -183,16 +186,18 @@ class VideoSignController extends StateNotifier<VideoSignState> {
       await _waitWhilePaused();
       if (_stopRequested) break;
 
-      // ── Step 3: Speak the word via TTS ──
-      state = state.copyWith(phase: PlayPhase.speaking);
+      // 2. SPEECH PHASE (Audio After Sign)
+      // Speak the full word ONCE
+      state = state.copyWith(
+        currentLabel: "Speaking: ${wordSign.word}",
+        phase: PlayPhase.speaking,
+      );
       try {
-        await _tts.speakAndWait(wordSign.word);
-      } catch (_) {
-        // TTS failed — continue anyway
-      }
+        await _tts.speakAndWait(spokenWord);
+      } catch (_) {}
 
-      // ── Step 4: Small inter-word delay ──
-      final delay = state.isSlowMode ? 600 : 300;
+      // ── Small inter-word delay ──
+      final delay = state.isSlowMode ? 500 : 300;
       await Future.delayed(Duration(milliseconds: delay));
     }
 

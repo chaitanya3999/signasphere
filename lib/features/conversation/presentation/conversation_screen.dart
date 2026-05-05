@@ -719,7 +719,10 @@ class _QuickSuggestionChips extends ConsumerWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 8),
             child: InkWell(
-              onTap: () => onSelect(text),
+              onTap: () {
+                ref.read(quickPhrasesProvider.notifier).usePhrase(text);
+                onSelect(text);
+              },
               borderRadius: BorderRadius.circular(20),
               child: GlassContainer(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
