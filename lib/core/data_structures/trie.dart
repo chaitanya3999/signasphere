@@ -1,24 +1,24 @@
-/// ═══════════════════════════════════════════════════════════════════
-/// TRIE (Prefix Tree) — Efficient Word Lookup & Suggestion Engine
-/// ═══════════════════════════════════════════════════════════════════
-///
-/// Time Complexity:
-///   - Insert: O(L) where L = word length
-///   - Search: O(L)
-///   - Prefix Suggestions: O(L + K) where K = results
-///
-/// Space Complexity: O(N × L) where N = total words
-///
-/// Used in: Learn Mode (word lookup), Conversation (suggestions),
-///          Avatar (sign-sequence mapping)
-/// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+// TRIE (Prefix Tree) — Efficient Word Lookup & Suggestion Engine
+// ═══════════════════════════════════════════════════════════════════
+//
+// Time Complexity:
+//   - Insert: O(L) where L = word length
+//   - Search: O(L)
+//   - Prefix Suggestions: O(L + K) where K = results
+//
+// Space Complexity: O(N × L) where N = total words
+//
+// Used in: Learn Mode (word lookup), Conversation (suggestions),
+//          Avatar (sign-sequence mapping)
+// ═══════════════════════════════════════════════════════════════════
 
 class TrieNode {
   final Map<String, TrieNode> children = {};
   bool isEndOfWord = false;
   String? signSequence; // Maps word → sign animation path
-  String? category;     // e.g., "FOOD", "EMOTION", "ACTION"
-  int searchCount = 0;  // Track popularity for analytics
+  String? category; // e.g., "FOOD", "EMOTION", "ACTION"
+  int searchCount = 0; // Track popularity for analytics
 
   TrieNode();
 }
@@ -117,7 +117,12 @@ class Trie {
     return current;
   }
 
-  void _collectWords(TrieNode node, String prefix, List<String> results, int max) {
+  void _collectWords(
+    TrieNode node,
+    String prefix,
+    List<String> results,
+    int max,
+  ) {
     if (results.length >= max) return;
     if (node.isEndOfWord) results.add(prefix);
 
@@ -126,7 +131,12 @@ class Trie {
     }
   }
 
-  void _collectByCategory(TrieNode node, String prefix, String category, List<String> results) {
+  void _collectByCategory(
+    TrieNode node,
+    String prefix,
+    String category,
+    List<String> results,
+  ) {
     if (node.isEndOfWord && node.category == category) {
       results.add(prefix);
     }

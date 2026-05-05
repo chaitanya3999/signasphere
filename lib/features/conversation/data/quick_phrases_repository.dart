@@ -13,11 +13,8 @@ final quickPhrasesRepositoryProvider = Provider<QuickPhrasesRepository>((ref) {
   return QuickPhrasesRepository(prefs, heap);
 });
 
-// --- PRIORITY QUEUE: Ranked Quick Phrases ---
-// WHY: We use a Max-Heap (Priority Queue) to rank phrases by usage count. 
-// Every time a phrase is used, its count increments and it takes O(log N) to re-heapify.
-// The most used phrase is always at the top in O(1) time. This is vastly more 
-// efficient for a dynamic list than sorting a raw array O(N log N) on every tap.
+// PRIORITY QUEUE: Ranked Quick Phrases
+// Max-Heap (Priority Queue) to rank phrases by usage count.
 
 class QuickPhrasesRepository {
   final SharedPreferences _prefs;
@@ -78,7 +75,9 @@ class QuickPhrasesRepository {
         final list = jsonDecode(json) as List;
         final entries = list.map((e) => PhraseEntry.fromJson(e)).toList();
         _heap.buildFrom(entries);
-        print('[DS:QuickPhrases] Loaded ${entries.length} usage entries from storage');
+        print(
+          '[DS:QuickPhrases] Loaded ${entries.length} usage entries from storage',
+        );
       } catch (_) {}
     }
   }

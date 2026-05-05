@@ -35,15 +35,15 @@ class ChatMessage {
   }) : role = role ?? (isMe ? 'user' : 'assistant');
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'text': text,
-        'isMe': isMe,
-        'timestamp': timestamp.toIso8601String(),
-        'isTyping': isTyping,
-        'role': role,
-        'source': source,
-        'status': status,
-      };
+    'id': id,
+    'text': text,
+    'isMe': isMe,
+    'timestamp': timestamp.toIso8601String(),
+    'isTyping': isTyping,
+    'role': role,
+    'source': source,
+    'status': status,
+  };
 
   factory ChatMessage.fromJson(Map<String, dynamic> json) {
     return ChatMessage(
@@ -72,11 +72,8 @@ class ChatMessage {
   }
 }
 
-// --- HUFFMAN CODING: Chat Compression ---
-// WHY: Huffman Coding provides optimal lossless compression by assigning shorter 
-// bit sequences to frequent characters. We use this to compress the JSON chat history 
-// before saving to SharedPreferences, significantly reducing the storage footprint.
-// This is done entirely in pure Dart without native C-library dependencies.
+// HUFFMAN CODING: Chat Compression
+// Huffman Coding provides optimal lossless compression
 
 class ConversationRepository {
   final SharedPreferences _prefs;
@@ -91,7 +88,9 @@ class ConversationRepository {
       final jsonStr = _huffman.decompressFromJson(compressed);
       if (jsonStr != null) {
         final List<dynamic> jsonList = jsonDecode(jsonStr);
-        print('[DS:ConvRepo] Loaded ${jsonList.length} messages (Huffman decompressed)');
+        print(
+          '[DS:ConvRepo] Loaded ${jsonList.length} messages (Huffman decompressed)',
+        );
         return jsonList.map((j) => ChatMessage.fromJson(j)).toList();
       }
     }
@@ -135,8 +134,10 @@ class ConversationRepository {
     final compressed = _huffman.compressToJson(jsonStr);
     if (compressed != null) {
       await _prefs.setString(_kCompressedKey, compressed);
-      print('[DS:ConvRepo] Saved ${messages.length} messages '
-          '(raw=${jsonStr.length} chars, compressed stored)');
+      print(
+        '[DS:ConvRepo] Saved ${messages.length} messages '
+        '(raw=${jsonStr.length} chars, compressed stored)',
+      );
     }
   }
 }

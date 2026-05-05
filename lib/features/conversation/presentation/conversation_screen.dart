@@ -62,7 +62,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
     // Regex for words with 2+ uppercase letters (e.g. ME, HELP, STOP)
     // This avoids matching "I" in "I am here", but matches "ME" in "ME - HELP".
     final RegExp glossRegex = RegExp(r'\b[A-Z]{2,}\b');
-    
+
     final matches = glossRegex.allMatches(text);
     if (matches.isNotEmpty) {
       // If we found Gloss words, speak ONLY those (joined by space)
@@ -74,6 +74,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       await _flutterTts.speak(text);
     }
   }
+
   void _showFeatureMenu() {
     showModalBottomSheet(
       context: context,
@@ -88,7 +89,10 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Chat Options", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text(
+              "Chat Options",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 16),
             ListTile(
               contentPadding: EdgeInsets.zero,
@@ -98,15 +102,26 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
-                child: Icon(PhosphorIcons.plus(PhosphorIconsStyle.bold), color: Theme.of(context).colorScheme.primary),
+                child: Icon(
+                  PhosphorIcons.plus(PhosphorIconsStyle.bold),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
-              title: const Text("New Chat", style: TextStyle(fontWeight: FontWeight.w600)),
+              title: const Text(
+                "New Chat",
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               subtitle: const Text("Clear context and start fresh"),
               onTap: () {
                 Navigator.pop(context);
-                ref.read(conversationControllerProvider.notifier).clearHistory();
+                ref
+                    .read(conversationControllerProvider.notifier)
+                    .clearHistory();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Started a new conversation"), duration: Duration(seconds: 1)),
+                  const SnackBar(
+                    content: Text("Started a new conversation"),
+                    duration: Duration(seconds: 1),
+                  ),
                 );
               },
             ),
@@ -120,7 +135,10 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                 ),
                 child: const Icon(Icons.history, color: Colors.purple),
               ),
-              title: const Text("View History", style: TextStyle(fontWeight: FontWeight.w600)),
+              title: const Text(
+                "View History",
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               subtitle: const Text("See previous messages"),
               onTap: () {
                 Navigator.pop(context);
@@ -158,33 +176,37 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.read(usageControllerProvider).trackEvent(UsageEventType.usedConversation);
+    ref
+        .read(usageControllerProvider)
+        .trackEvent(UsageEventType.usedConversation);
     final messages = ref.watch(conversationControllerProvider);
 
     // Auto-scroll on new messages & handle rate limit feedback
     ref.listen(conversationControllerProvider, (prev, next) {
       if (next.length > (prev?.length ?? 0)) {
         Future.delayed(const Duration(milliseconds: 100), _scrollToBottom);
-        
+
         // Show rate limit snackbars from error message
         final lastMsg = next.last;
         if (lastMsg.status == 'error') {
           if (lastMsg.text.contains("AI is busy")) {
-             ScaffoldMessenger.of(context).showSnackBar(
-               SnackBar(
-                 content: const Text("AI is busy. Trying again..."),
-                 backgroundColor: Colors.orangeAccent.withOpacity(0.8),
-                 behavior: SnackBarBehavior.floating,
-               )
-             );
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text("AI is busy. Trying again..."),
+                backgroundColor: Colors.orangeAccent.withOpacity(0.8),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
           } else if (lastMsg.text.contains("overloaded")) {
-             ScaffoldMessenger.of(context).showSnackBar(
-               SnackBar(
-                 content: const Text("AI is overloaded. Please try again in 1 minute."),
-                 backgroundColor: Colors.redAccent.withOpacity(0.8),
-                 behavior: SnackBarBehavior.floating,
-               )
-             );
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text(
+                  "AI is overloaded. Please try again in 1 minute.",
+                ),
+                backgroundColor: Colors.redAccent.withOpacity(0.8),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
           }
         }
       }
@@ -198,11 +220,16 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
           // GPT Mode Toggle
           Row(
             children: [
-              Text("GPT", style: TextStyle(
-                fontSize: 12, 
-                fontWeight: FontWeight.bold,
-                color: ref.watch(gptModeProvider) ? Theme.of(context).colorScheme.primary : Colors.grey
-              )),
+              Text(
+                "GPT",
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: ref.watch(gptModeProvider)
+                      ? Theme.of(context).colorScheme.primary
+                      : Colors.grey,
+                ),
+              ),
               Transform.scale(
                 scale: 0.7,
                 child: Switch(
@@ -279,22 +306,25 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // Quick Phrases Horizontal Bar
-                  _QuickSuggestionChips(
-                    onSelect: (text) => _sendMessage(text),
-                  ),
+                  _QuickSuggestionChips(onSelect: (text) => _sendMessage(text)),
                   const SizedBox(height: 12),
-                  
+
                   // Simple Text Input Row
                   GlassContainer(
                     padding: const EdgeInsets.all(8),
-                    opacity: 0.9, 
+                    opacity: 0.9,
                     color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(30),
                     child: Row(
                       children: [
                         // Feature Button (+) similar to ChatGPT
                         IconButton(
-                          icon: Icon(Icons.add_circle_outline, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+                          icon: Icon(
+                            Icons.add_circle_outline,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withOpacity(0.5),
+                          ),
                           onPressed: _showFeatureMenu,
                           tooltip: 'Features',
                         ),
@@ -304,9 +334,13 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                             decoration: const InputDecoration(
                               hintText: "Type a message...",
                               border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
                             ),
-                            style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
                             onSubmitted: _sendMessage,
                           ),
                         ),
@@ -318,12 +352,19 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
-                            icon: const Icon(Icons.arrow_upward, color: Colors.white, size: 20),
+                            icon: const Icon(
+                              Icons.arrow_upward,
+                              color: Colors.white,
+                              size: 20,
+                            ),
                             onPressed: () => _sendMessage(_textController.text),
-                            constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                            constraints: const BoxConstraints(
+                              minWidth: 36,
+                              minHeight: 36,
+                            ),
                             padding: EdgeInsets.zero,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -341,7 +382,8 @@ class _ManagePhrasesModal extends ConsumerStatefulWidget {
   const _ManagePhrasesModal();
 
   @override
-  ConsumerState<_ManagePhrasesModal> createState() => _ManagePhrasesModalState();
+  ConsumerState<_ManagePhrasesModal> createState() =>
+      _ManagePhrasesModalState();
 }
 
 class _ManagePhrasesModalState extends ConsumerState<_ManagePhrasesModal> {
@@ -352,7 +394,12 @@ class _ManagePhrasesModalState extends ConsumerState<_ManagePhrasesModal> {
     final phrases = ref.watch(quickPhrasesProvider);
 
     return Container(
-      padding: EdgeInsets.fromLTRB(24, 24, 24, MediaQuery.of(context).viewInsets.bottom + 24),
+      padding: EdgeInsets.fromLTRB(
+        24,
+        24,
+        24,
+        MediaQuery.of(context).viewInsets.bottom + 24,
+      ),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
@@ -367,7 +414,7 @@ class _ManagePhrasesModalState extends ConsumerState<_ManagePhrasesModal> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
-          
+
           // Add New Phrase
           Row(
             children: [
@@ -408,29 +455,38 @@ class _ManagePhrasesModalState extends ConsumerState<_ManagePhrasesModal> {
                 return ListTile(
                   title: Text(phrase),
                   trailing: IconButton(
-                    icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+                    icon: const Icon(
+                      Icons.delete_outline,
+                      color: Colors.redAccent,
+                    ),
                     onPressed: () {
-                      ref.read(quickPhrasesProvider.notifier).removePhrase(phrase);
+                      ref
+                          .read(quickPhrasesProvider.notifier)
+                          .removePhrase(phrase);
                     },
                   ),
                 );
               },
             ),
           ),
-          
+
           if (phrases.isEmpty)
-             const Padding(
-               padding: EdgeInsets.all(16.0),
-               child: Text("No phrases yet.", textAlign: TextAlign.center, style: TextStyle(color: Colors.grey)),
-             ),
-             
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                "No phrases yet.",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+
           const SizedBox(height: 16),
           TextButton(
             onPressed: () {
-               ref.read(quickPhrasesProvider.notifier).resetToDefaults();
-            }, 
+              ref.read(quickPhrasesProvider.notifier).resetToDefaults();
+            },
             child: const Text("Reset to Defaults"),
-          )
+          ),
         ],
       ),
     );
@@ -460,12 +516,15 @@ class _HistoryModal extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text("Conversation History",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const Text(
+            "Conversation History",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 16),
           const Text(
-              "Your chat history is saved locally. You can clear it anytime.",
-              textAlign: TextAlign.center),
+            "Your chat history is saved locally. You can clear it anytime.",
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(height: 24),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -523,16 +582,21 @@ class _Dot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 8,
-      height: 8,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
-        shape: BoxShape.circle,
-      ),
-    )
-    .animate(onPlay: (c) => c.repeat(reverse: true))
-    .scale(begin: const Offset(0.5, 0.5), end: const Offset(1.2, 1.2), duration: 600.ms, delay: delay.ms)
-    .fade(begin: 0.3, end: 1.0, duration: 600.ms, delay: delay.ms);
+          width: 8,
+          height: 8,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+            shape: BoxShape.circle,
+          ),
+        )
+        .animate(onPlay: (c) => c.repeat(reverse: true))
+        .scale(
+          begin: const Offset(0.5, 0.5),
+          end: const Offset(1.2, 1.2),
+          duration: 600.ms,
+          delay: delay.ms,
+        )
+        .fade(begin: 0.3, end: 1.0, duration: 600.ms, delay: delay.ms);
   }
 }
 
@@ -567,21 +631,27 @@ class _ChatBubble extends ConsumerWidget {
         width: MediaQuery.of(context).size.width * 0.75,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment:
-              isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+          mainAxisAlignment: isMe
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
           children: [
-             if (!isMe) ...[
-               CircleAvatar(
-                 backgroundColor: bubbleColor.withOpacity(0.2),
-                 radius: 16,
-                 child: Icon(isError ? Icons.error_outline : icon, size: 16, color: bubbleColor),
-               ),
-               const SizedBox(width: 8),
+            if (!isMe) ...[
+              CircleAvatar(
+                backgroundColor: bubbleColor.withOpacity(0.2),
+                radius: 16,
+                child: Icon(
+                  isError ? Icons.error_outline : icon,
+                  size: 16,
+                  color: bubbleColor,
+                ),
+              ),
+              const SizedBox(width: 8),
             ],
             Flexible(
               child: Column(
-                crossAxisAlignment:
-                    isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                crossAxisAlignment: isMe
+                    ? CrossAxisAlignment.end
+                    : CrossAxisAlignment.start,
                 children: [
                   GlassContainer(
                     padding: const EdgeInsets.all(16),
@@ -596,7 +666,9 @@ class _ChatBubble extends ConsumerWidget {
                     border: Border.all(
                       color: isMe
                           ? color.withOpacity(0.3)
-                          : (isError ? Colors.redAccent.withOpacity(0.5) : Colors.white.withOpacity(0.1)),
+                          : (isError
+                                ? Colors.redAccent.withOpacity(0.5)
+                                : Colors.white.withOpacity(0.1)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -604,7 +676,7 @@ class _ChatBubble extends ConsumerWidget {
                         Text(
                           message,
                           style: TextStyle(
-                            fontSize: 16, 
+                            fontSize: 16,
                             height: 1.4,
                             color: isError ? Colors.red.shade200 : null,
                           ),
@@ -619,9 +691,26 @@ class _ChatBubble extends ConsumerWidget {
                                 onTap: onSpeak,
                                 child: Row(
                                   children: [
-                                    Icon(PhosphorIcons.speakerHigh(PhosphorIconsStyle.fill), size: 14, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+                                    Icon(
+                                      PhosphorIcons.speakerHigh(
+                                        PhosphorIconsStyle.fill,
+                                      ),
+                                      size: 14,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onSurface.withOpacity(0.5),
+                                    ),
                                     const SizedBox(width: 4),
-                                    Text("Speak", style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                                    Text(
+                                      "Speak",
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -629,46 +718,86 @@ class _ChatBubble extends ConsumerWidget {
                               // Copy Button
                               InkWell(
                                 onTap: () {
-                                  Clipboard.setData(ClipboardData(text: message));
+                                  Clipboard.setData(
+                                    ClipboardData(text: message),
+                                  );
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text("Copied to clipboard"), duration: Duration(seconds: 1)),
+                                    const SnackBar(
+                                      content: Text("Copied to clipboard"),
+                                      duration: Duration(seconds: 1),
+                                    ),
                                   );
                                 },
                                 child: Row(
                                   children: [
-                                    Icon(PhosphorIcons.copy(PhosphorIconsStyle.fill), size: 14, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+                                    Icon(
+                                      PhosphorIcons.copy(
+                                        PhosphorIconsStyle.fill,
+                                      ),
+                                      size: 14,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onSurface.withOpacity(0.5),
+                                    ),
                                     const SizedBox(width: 4),
-                                    Text("Copy", style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                                    Text(
+                                      "Copy",
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withOpacity(0.5),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ],
-                          )
+                          ),
                         ],
                         if (isError) ...[
                           const SizedBox(height: 12),
                           InkWell(
                             onTap: () {
-                              ref.read(conversationControllerProvider.notifier).retryLastMessage();
+                              ref
+                                  .read(conversationControllerProvider.notifier)
+                                  .retryLastMessage();
                             },
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.redAccent.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.redAccent.withOpacity(0.5)),
+                                border: Border.all(
+                                  color: Colors.redAccent.withOpacity(0.5),
+                                ),
                               ),
                               child: const Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(Icons.refresh, size: 14, color: Colors.redAccent),
+                                  Icon(
+                                    Icons.refresh,
+                                    size: 14,
+                                    color: Colors.redAccent,
+                                  ),
                                   SizedBox(width: 4),
-                                  Text("Retry", style: TextStyle(fontSize: 12, color: Colors.redAccent, fontWeight: FontWeight.bold)),
+                                  Text(
+                                    "Retry",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.redAccent,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                          )
-                        ]
+                          ),
+                        ],
                       ],
                     ),
                   ),
@@ -677,22 +806,21 @@ class _ChatBubble extends ConsumerWidget {
                     timestamp,
                     style: TextStyle(
                       fontSize: 10,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withOpacity(0.4),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.4),
                     ),
                   ),
                 ],
               ),
             ),
-             if (isMe) ...[
-               const SizedBox(width: 8),
-               CircleAvatar(
-                 backgroundColor: color.withOpacity(0.2),
-                 radius: 16,
-                 child: Icon(icon, size: 16, color: color),
-               ),
+            if (isMe) ...[
+              const SizedBox(width: 8),
+              CircleAvatar(
+                backgroundColor: color.withOpacity(0.2),
+                radius: 16,
+                child: Icon(icon, size: 16, color: color),
+              ),
             ],
           ],
         ),
@@ -725,11 +853,16 @@ class _QuickSuggestionChips extends ConsumerWidget {
               },
               borderRadius: BorderRadius.circular(20),
               child: GlassContainer(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
                 borderRadius: BorderRadius.circular(20),
                 color: Theme.of(context).colorScheme.primary,
                 opacity: 0.1,
-                border: Border.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.2)),
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                ),
                 child: Text(
                   text,
                   style: TextStyle(
@@ -746,4 +879,3 @@ class _QuickSuggestionChips extends ConsumerWidget {
     );
   }
 }
-
